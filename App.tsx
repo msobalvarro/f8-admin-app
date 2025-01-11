@@ -10,6 +10,9 @@ import NewService from './views/newService'
 import Products from './views/products'
 import Product from './views/product'
 import Service from './views/service'
+import NewProduct from './views/newProduct'
+import Preference from './views/preference'
+import Services from './views/services'
 
 
 const RootStack = createNativeStackNavigator({
@@ -23,9 +26,12 @@ const RootStack = createNativeStackNavigator({
     Menu,
     Messages,
     NewService,
+    NewProduct,
     Products,
     Product,
-    Service
+    Services,
+    Service,
+    Preference
   },
 })
 

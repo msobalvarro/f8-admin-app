@@ -9,7 +9,7 @@ import { Text, TextInput, View } from 'react-native'
 import { useState } from 'react'
 import { useNavigation } from '@react-navigation/native'
 
-export default function ServiceView() {
+export default function Services() {
   const navigation = useNavigation()
   const [filter, setFilter] = useState<string>('')
   const { data, isLoading, refetch } = useAxios<ServicesPropierties[]>({ endpoint: '/services' })
