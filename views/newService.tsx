@@ -93,7 +93,7 @@ export default function NewService() {
             placeholder='Escriba una descripción clara del servicio' />
         </View>
 
-        <Button loading={loading} onPress={submit}>
+        <Button icon='plus' mode='contained' textColor='#FFF' loading={loading} onPress={submit}>
           Agregar Servicio
         </Button>
       </View>

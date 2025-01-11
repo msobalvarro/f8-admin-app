@@ -89,12 +89,11 @@ export default function NewProduct() {
             placeholderTextColor='#CCC'
             onChangeText={setDescription}
             multiline
-            numberOfLines={4}
             style={[UiStyles.InputStyle, { height: 200 }]}
             placeholder='Escriba una descripción del producto' />
         </View>
 
-        <Button loading={loading} onPress={submit} textColor='#FFF' buttonColor={Colors.primary}>
+        <Button icon='plus' mode='contained' textColor='#FFF' loading={loading} onPress={submit}>
           Agregar Producto
         </Button>
       </View>

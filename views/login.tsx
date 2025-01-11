@@ -72,7 +72,7 @@ export default function Login() {
 
         </View>
 
-        <Button loading={loading} onPress={handleLogin}>
+        <Button mode='contained' textColor='#FFF' loading={loading} onPress={handleLogin}>
           Iniciar Sesión
         </Button>
       </View>
