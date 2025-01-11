@@ -10,7 +10,7 @@ import { ALERT_TYPE, Toast } from 'react-native-alert-notification'
 import { Asset } from 'react-native-image-picker'
 import { AddImagesButton } from '@/components/product/addImagesButton'
 import { createService } from '@/services/createService'
-import { useNavigation } from '@react-navigation/native'
+import { StackActions, useNavigation } from '@react-navigation/native'
 
 export default function NewService() {
   const navigation = useNavigation()
@@ -42,7 +42,7 @@ export default function NewService() {
         onPress: () => console.log('click'),
       })
 
-      navigation.navigate('Services' as never)
+      navigation.dispatch(StackActions.replace('Services'))
     } catch (error) {
       Toast.show({
         title: String(error),

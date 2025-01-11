@@ -12,13 +12,14 @@ export const uploadImageService = async (image: Asset): Promise<string> => {
     type: image.type,
   } as any)
 
-  try {    
+  try {
     let { data } = await axios.post<FileUploadedResponse>(
       `${serverAddress}/images`,
       formData,
       {
         headers: {
-          'Authorization': `Bearer ${store.getState().token}`
+          'Authorization': `Bearer ${store.getState().token}`,
+          'Content-Type': 'multipart/form-data',
         },
       }
     )

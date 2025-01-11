@@ -2,7 +2,6 @@ import { ContainerViewLayout } from '@/components/ContainerView'
 import { IconTrash } from '@/components/Icons'
 import { AddImagesButton } from '@/components/product/addImagesButton'
 import { ImageEditGalery } from '@/components/product/imageEditGalery'
-// import { ProductSkeleton } from '@/components/product/productSkeleton'
 import { TitleView } from '@/components/TitleView'
 import { useAxios } from '@/hooks/useFetch'
 import { ServicesPropierties } from '@/interfaces'
@@ -13,9 +12,9 @@ import { uploadImageService } from '@/services/uploadImage'
 import { ProductsStyles as styles, UiStyles } from '@/styles'
 import { Button, Checkbox } from 'react-native-paper'
 import { useEffect, useState } from 'react'
-import { Alert, Text, TextInput, View } from 'react-native'
+import { Alert, TextInput, View } from 'react-native'
 import { Toast, ALERT_TYPE } from 'react-native-alert-notification'
-import { RouteProp, useNavigation } from '@react-navigation/native'
+import { useNavigation } from '@react-navigation/native'
 import { Asset } from 'react-native-image-picker'
 
 export default function Service({ route }: { route: any }) {
@@ -158,8 +157,6 @@ export default function Service({ route }: { route: any }) {
         },
       },
     ])
-
-
   }
 
   return (
@@ -225,22 +222,25 @@ export default function Service({ route }: { route: any }) {
             {(service !== data || newImages.length > 0) && (
               <Button
                 style={{ flex: 1 }}
-                isLoading={loading || isLoading}
-                onPress={updateService}
-                colorScheme='green'>Guardar</Button>
+                loading={loading || isLoading}
+                onPress={updateService}>
+                Guardar
+              </Button>
             )}
 
             {!service.archived
               ? <Button
                 onPress={updateArchived}
                 style={{ flex: 1 }}
-                isLoading={loading || isLoading}
-                colorScheme='warning'>Archivar</Button>
+                loading={loading || isLoading}>
+                Archivar
+              </Button>
               : <Button
                 onPress={updateArchived}
                 style={{ flex: 1 }}
-                isLoading={loading || isLoading}
-                colorScheme='secondary'>Activar</Button>
+                loading={loading || isLoading}>
+                Activar
+              </Button>
             }
           </View>
         </View>
