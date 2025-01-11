@@ -4,7 +4,7 @@ import { PreferenceResponse } from '@/interfaces'
 import { ALERT_TYPE, Toast } from 'react-native-alert-notification'
 
 
-export const updatePreferenceService = async (id: string) => {
+export const deletePreferenceService = async (id: string) => {
   try {
     await axiosInstance.delete(`/preferences?id=${id}`)
 

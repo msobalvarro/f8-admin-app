@@ -53,11 +53,15 @@ export interface MessagesResponse {
 }
 
 
-export interface ServicesPropierties { 
+export interface ServicesPropierties {
   _id: string
   title: string
-  description: string  
+  description: string
   images: string[]
   archived?: boolean
   pinned?: boolean
+}
+
+export interface PreferenceContext {
+  refetch: () => void
 }

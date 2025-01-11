@@ -3,6 +3,7 @@ import { ItemPreference } from '@/components/preferences/itemPreference'
 import { LoadingSekeleton } from '@/components/preferences/loadingSkeleton'
 import { NewPreference } from '@/components/preferences/newPreference'
 import { TitleView } from '@/components/TitleView'
+import { PreferenceContextService } from '@/context'
 import { useAxios } from '@/hooks/useFetch'
 import { PreferenceResponse } from '@/interfaces'
 import { PreferenceStyles as styles } from '@/styles'
@@ -14,23 +15,25 @@ export default function Preference() {
   const [showModal, toggleModal] = useState(false)
 
   return (
-    <ContainerViewLayout scroll onRefresh={refetch} isLoading={isLoading}>
-      <View style={{ paddingVertical: 30, gap: 20 }}>
-        <TitleView
-          onClickAdd={() => toggleModal(true)}
-          title='Preferencias'
-          subtitle='Establece tus variables para el sitio de f8' />
-        
-        {isLoading && <LoadingSekeleton />}
+    <PreferenceContextService.Provider value={{ refetch }}>
+      <ContainerViewLayout scroll onRefresh={refetch} isLoading={isLoading}>
+        <View style={{ paddingVertical: 30, gap: 20 }}>
+          <TitleView
+            onClickAdd={() => toggleModal(true)}
+            title='Preferencias'
+            subtitle='Establece tus variables para el sitio de f8' />
 
-        <View style={styles.containerList}>
-          {!isLoading && data?.map((data, i) => (
-            <ItemPreference refetch={refetch} preference={data} key={i} />
-          ))}
+          {isLoading && <LoadingSekeleton />}
+
+          <View style={styles.containerList}>
+            {!isLoading && data?.map((data, i) => (
+              <ItemPreference preference={data} key={i} />
+            ))}
+          </View>
+
+          {showModal && <NewPreference />}
         </View>
-
-        {showModal && <NewPreference />}
-      </View>
-    </ContainerViewLayout>
+      </ContainerViewLayout>
+    </PreferenceContextService.Provider>
   )
 }

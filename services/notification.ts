@@ -7,13 +7,16 @@ export async function onDisplayNotification(body: string) {
   const channelId = await notifee.createChannel({
     id: 'default',
     name: 'Default Channel',
-    importance: AndroidImportance.HIGH
+    importance: AndroidImportance.HIGH,
   })
 
   // Display a notification
   await notifee.displayNotification({
     title: 'F8 Technologies',
     body,
+    data: {
+      type: 'message'
+    },
     android: {
       channelId,
       smallIcon: 'ic_launcher',

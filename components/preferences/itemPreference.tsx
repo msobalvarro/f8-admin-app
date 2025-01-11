@@ -12,7 +12,7 @@ interface Props {
   refetch: () => void
 }
 
-export const ItemPreference = ({ preference, refetch }: Props) => {
+export const ItemPreference = ({ preference }: Props) => {
   const [loading, setLoading] = useState(false)
   const [dataForm, setData] = useState<PreferenceResponse>(preference)
 
