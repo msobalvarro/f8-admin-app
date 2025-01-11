@@ -1,8 +1,8 @@
 import { Colors } from '@/constants/colors'
-import { PreferenceResponse, PreferencesPropierties } from '@/interfaces'
+import { PreferenceResponse } from '@/interfaces'
 import { updatePreferenceService } from '@/services/updatePreference'
 import { UiStyles } from '@/styles'
-import { Button } from 'native-base'
+import { Button } from 'react-native-paper'
 import { useState } from 'react'
 import { StyleSheet, Text, TextInput, View } from 'react-native'
 import { ALERT_TYPE, Toast } from 'react-native-alert-notification'
@@ -56,8 +56,8 @@ export const ItemPreference = ({ preference, refetch }: Props) => {
 
       {dataForm !== preference && (
         <Button
-          isLoading={loading}
-          colorScheme='green'
+          buttonColor={Colors.primary}
+          loading={loading}
           onPress={handleUpdate}>
           Actualizar
         </Button>

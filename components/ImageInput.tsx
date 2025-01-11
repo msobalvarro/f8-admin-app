@@ -1,5 +1,5 @@
 import { handleImagePickerService } from '@/services/imagePicker'
-import { Button } from 'native-base'
+import { Button } from 'react-native-paper'
 
 interface Props {
   onChangeImages: (image: string[]) => void
@@ -7,10 +7,12 @@ interface Props {
 
 export const ImageInput = ({ onChangeImages }: Props) => {
   const handleImagePicker = async () => {
-    onChangeImages(await handleImagePickerService())
+    const data = await handleImagePickerService()
+    
+    onChangeImages(data.map(e => String(e.uri)))
   }
 
   return (
-    <Button colorScheme='blueGray' onPress={handleImagePicker}>Agregar Fotos</Button>
+    <Button onPress={handleImagePicker}>Agregar Fotos</Button>
   )
 }

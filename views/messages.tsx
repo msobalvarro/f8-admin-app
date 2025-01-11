@@ -40,7 +40,6 @@ export default function MessageView() {
         <Checkbox.Item
           label='Mostrar archivados'
           color='#FFF'
-          
           rippleColor='#FFF'
           disabled={isLoading}
           status={showArchive ? 'checked' : 'unchecked'}

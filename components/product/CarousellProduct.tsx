@@ -1,6 +1,5 @@
 import { CarousellStyle as styles } from '@/styles'
-import { View } from 'react-native'
-import { Image } from 'native-base'
+import { View, Image } from 'react-native'
 import { ScrollView } from 'react-native'
 import { serverAddress } from '@/constants/constanst'
 

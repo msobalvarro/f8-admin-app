@@ -1,15 +1,15 @@
 import axios, { AxiosError } from 'axios'
 import { FileUploadedResponse } from '@/interfaces'
-import { ImagePickerAsset } from 'expo-image-picker'
 import { store } from '@/store'
 import { serverAddress } from '@/constants/constanst'
+import { Asset } from 'react-native-image-picker'
 
-export const uploadImageService = async (image: ImagePickerAsset): Promise<string> => {
+export const uploadImageService = async (image: Asset): Promise<string> => {
   const formData = new FormData()
   formData.append('file', {
     uri: image.uri,
     name: image.fileName,
-    type: image.mimeType,
+    type: image.type,
   } as any)
 
   try {    

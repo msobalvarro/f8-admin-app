@@ -1,6 +1,5 @@
-import { StyleSheet, Text, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { IconImages } from '../Icons'
-import { View } from 'native-base'
 
 interface Props {
   onClick: () => void

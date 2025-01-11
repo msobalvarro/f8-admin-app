@@ -2,20 +2,20 @@ import { ProductsStyles as styles } from '@/styles'
 import { ServicesPropierties } from '@/interfaces'
 import { Text, View } from 'react-native'
 import { CarousellProduct } from '@/components/product/CarousellProduct'
-import { Badge, Button } from 'native-base'
-import { useRouter } from 'expo-router'
+import { Badge, Button } from 'react-native-paper'
 import { IconPin } from '../Icons'
+import { useNavigation } from '@react-navigation/native'
 
 interface Props {
   service: ServicesPropierties
 }
 
 export const ServiceItem = ({ service }: Props) => {
-  const navigation = useRouter()
+  const navigation = useNavigation()
 
   const handleEditService = () => {
     // Navigate to edit product screen
-    navigation.navigate(`/service?id=${service._id}`)
+    navigation.navigate(`Service` as never, { id: service._id } as any)
   }
 
   return (
@@ -29,7 +29,7 @@ export const ServiceItem = ({ service }: Props) => {
           </Text>
 
           <View style={styles.subContainerInformation}>
-            {service.archived && <Badge colorScheme='trueGray' rounded='full'>Archivado</Badge>}
+            {service.archived && <Badge>Archivado</Badge>}
             {service.pinned && <IconPin />}
           </View>
         </View>
@@ -37,7 +37,7 @@ export const ServiceItem = ({ service }: Props) => {
         <Text style={styles.description}>{service.description}</Text>
       </View>
 
-      <Button onPress={handleEditService} colorScheme='primary'>Editar</Button>
+      <Button onPress={handleEditService}>Editar</Button>
     </View>
   )
 }

@@ -1,11 +1,15 @@
-import { createStaticNavigation, NavigationContainer, NavigationIndependentTree } from '@react-navigation/native'
+import { createStaticNavigation, NavigationIndependentTree } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { PaperProvider } from 'react-native-paper'
 import { theme } from './constants/constanst'
+import { AlertNotificationRoot } from 'react-native-alert-notification'
 import Login from './views/login'
 import Menu from './views/menu'
-import Messages from '@/views/messages'
-import { AlertNotificationRoot } from 'react-native-alert-notification'
+import Messages from './views/messages'
+import NewService from './views/newService'
+import Products from './views/products'
+import Product from './views/product'
+import Service from './views/service'
 
 
 const RootStack = createNativeStackNavigator({
@@ -14,7 +18,15 @@ const RootStack = createNativeStackNavigator({
     navigationBarHidden: true,
     header: () => null
   },
-  screens: { Login, Menu, Messages },
+  screens: {
+    Login,
+    Menu,
+    Messages,
+    NewService,
+    Products,
+    Product,
+    Service
+  },
 })
 
 const Navigation = createStaticNavigation(RootStack)

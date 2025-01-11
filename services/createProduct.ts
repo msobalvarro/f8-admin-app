@@ -1,13 +1,13 @@
 import { ProductsResponse } from '@/interfaces'
 import { axiosInstance } from './axiosInstance'
 import { uploadImageService } from './uploadImage'
-import { ImagePickerAsset } from 'expo-image-picker'
+import { Asset } from 'react-native-image-picker'
 
 interface Props {
   name: string
   description: string
   pinned: boolean
-  imagesList: ImagePickerAsset[]
+  imagesList: Asset[]
 }
 
 export const createProductService = async ({ imagesList, description, name, pinned }: Props): Promise<ProductsResponse> => {

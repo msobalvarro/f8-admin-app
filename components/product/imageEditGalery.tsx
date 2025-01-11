@@ -1,13 +1,13 @@
 import { StyleSheet, View } from 'react-native'
 import { ProductImage } from './productImage'
 import { serverAddress } from '@/constants/constanst'
-import { ImagePickerAsset } from 'expo-image-picker'
+import { Asset } from 'react-native-image-picker'
 
 interface Props {
   images?: string[]
-  imagesLocal?: ImagePickerAsset[]
+  imagesLocal?: Asset[]
   onDelete?: (image: string) => void
-  onDeleteLocal?: (image: ImagePickerAsset) => void
+  onDeleteLocal?: (image: Asset) => void
   isLocal?: boolean
 }
 
@@ -19,7 +19,7 @@ export const ImageEditGalery = ({ images, onDelete, isLocal, imagesLocal, onDele
           <ProductImage
             onDelete={() => onDeleteLocal?.(image)}
             key={i}
-            source={typeof image === 'string' ? image : image.uri} />)}
+            source={typeof image === 'string' ? image : String(image.uri)} />)}
       </View>
     )
   }
