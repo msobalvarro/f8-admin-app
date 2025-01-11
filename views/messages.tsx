@@ -3,6 +3,7 @@ import { MessageCard } from '@/components/message/itemMessage'
 import { TitleView } from '@/components/TitleView'
 import { useAxios } from '@/hooks/useFetch'
 import { MessagesResponse } from '@/interfaces'
+import { socket } from '@/socket'
 import { MessageStyles as styles, UiStyles } from '@/styles'
 import { useEffect, useState } from 'react'
 import { Text, TextInput, View } from 'react-native'
@@ -25,6 +26,10 @@ export default function MessageView() {
     refetch()
   }, [showArchive])
 
+  useEffect(() => {
+    socket.on('newMessage', () => refetch())
+  }, [])
+
   const onChangeArchived = () => {
     toggleArchive(!showArchive)
   }
@@ -44,7 +49,6 @@ export default function MessageView() {
           disabled={isLoading}
           status={showArchive ? 'checked' : 'unchecked'}
           onPress={onChangeArchived} />
-        {/* <Text style={{ color: '#CCC', fontSize: 16 }}></Text> */}
 
         <TextInput
           placeholderTextColor='#CCC'

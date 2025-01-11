@@ -270,6 +270,7 @@ export const MessageItemStyles = StyleSheet.create({
   time: {
     fontSize: 14,
     color: '#AAA',
+    marginBottom: 20,
   },
   subHeader: {
     fontSize: 14,

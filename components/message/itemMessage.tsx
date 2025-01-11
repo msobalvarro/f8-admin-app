@@ -81,7 +81,7 @@ export const MessageCard = ({ message, refetch }: Props) => {
 
           <Button
             loading={loading}
-            textColor='#a62b2d'
+            textColor={Colors.delete}
             icon='delete'
             onPress={handleDelete}>
             Eliminar
