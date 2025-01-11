@@ -144,14 +144,12 @@ export const ContainerLayoutStyles = StyleSheet.create({
   container: {
     backgroundColor: Colors.backgroundLayout,
     flex: 1,
-    boxSizing: 'border-box',
     width: WidthScreen,
     paddingBottom: HeightScreen * 0.05,
     paddingHorizontal: WidthScreen * 0.05,
   },
   containerScroll: {
     backgroundColor: Colors.backgroundLayout,
-    boxSizing: 'border-box',
     flex: 1,
     width: WidthScreen,
     height: HeightScreen,

@@ -40,7 +40,7 @@ export default function Menu() {
         <TitleView
           hiddenButton
           title='Menú F8 Manager'
-          subtitle='Administra tu sitio web con opciones parametrizadas'
+          subtitle='Administra tu sitio web F8, agregando servicios, productos.'
         />
 
         <TouchableOpacity style={styles.button} onPress={() => router.navigate('Messages' as never)}>
