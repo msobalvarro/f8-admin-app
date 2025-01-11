@@ -269,7 +269,7 @@ export const MessageItemStyles = StyleSheet.create({
   },
   time: {
     fontSize: 14,
-    color: '#FFF',
+    color: '#AAA',
   },
   subHeader: {
     fontSize: 14,
@@ -307,7 +307,7 @@ export const MessageItemStyles = StyleSheet.create({
 
   containerButtons: {
     flexDirection: 'row',
-    justifyContent: 'flex-end',
+    justifyContent: 'space-between',
     gap: 10,
   },
 

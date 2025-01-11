@@ -6,10 +6,11 @@ import { View, Text, ScrollView } from 'react-native'
 import { ContactButtons } from './contactCard'
 import { useState } from 'react'
 import { handledArchiveMessage, handleDeleteMessage } from '@/services/messageServices'
-import { IconArchive, IconTrash } from '../Icons'
+import { IconArchive, IconTrash, IconUndo } from '../Icons'
 import { theme } from '@/constants/constanst'
 import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime'
+import { Colors } from '@/constants/colors'
 
 dayjs.extend(relativeTime)
 
@@ -39,8 +40,14 @@ export const MessageCard = ({ message, refetch }: Props) => {
         )}
 
         <Text style={styles.header}>Message from {message.fullName}</Text>
-        <Text style={styles.time}>{dayjs(message.createdAt).fromNow()}</Text>
-        <Text style={styles.subHeader}>{message.company}</Text>
+        <Text style={styles.time}>{dayjs(message.createdAt).format('DD/MM/YY HH:mm A')} ({dayjs(message.createdAt).fromNow()})</Text>
+
+        {message.company && (
+          <View style={styles.detailContainer}>
+            <Text style={styles.detailTitle}>Compañia:</Text>
+            <Text style={styles.detailText} selectable>{message.company}</Text>
+          </View>
+        )}
 
         <View style={styles.detailContainer}>
           <Text style={styles.detailTitle}>Email:</Text>
@@ -60,25 +67,24 @@ export const MessageCard = ({ message, refetch }: Props) => {
         <View style={styles.containerButtons}>
           {!message?.archived && <Button
             loading={loading}
-            buttonColor={theme.colors.surface}
-            onPress={handledArchive}>
-            <IconArchive />
-          </Button>}
+            textColor={Colors.primary}
+            icon='archive'
+            onPress={handledArchive}>Archivar</Button>}
 
           {message?.archived && (
             <Button
               loading={loading}
-              buttonColor={theme.colors.surface}
-              onPress={handledArchive}>
-              Recuperar
-            </Button>
+              textColor={Colors.primary}
+              icon='undo'
+              onPress={handledArchive}>Recuperar</Button>
           )}
 
           <Button
             loading={loading}
-            buttonColor={theme.colors.primary}
+            textColor='#a62b2d'
+            icon='delete'
             onPress={handleDelete}>
-            <IconTrash />
+            Eliminar
           </Button>
         </View>
 
