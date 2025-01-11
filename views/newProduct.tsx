@@ -94,7 +94,7 @@ export default function NewProduct() {
             placeholder='Escriba una descripción del producto' />
         </View>
 
-        <Button loading={loading} onPress={submit} buttonColor={Colors.primary}>
+        <Button loading={loading} onPress={submit} textColor='#FFF' buttonColor={Colors.primary}>
           Agregar Producto
         </Button>
       </View>

@@ -1,29 +1,28 @@
-import logo from '@/assets/images/logo/F8_Horizontal_Logo.png'
 import { Image, StyleSheet, TouchableOpacity, View } from 'react-native'
 import { Colors } from '@/constants/colors'
-import { usePathname, useRouter } from 'expo-router'
 import { IconBack, IconMenu } from '../Icons'
+import { useNavigation, useRoute } from '@react-navigation/native'
 
 export const UiNavbar = () => {
-  const router = useRouter()
-  const pathName = usePathname()
+  const router = useNavigation()
+  const pathName = useRoute().name
 
-  if (pathName === '/') return null
+  if (pathName === 'Login') return null
 
   return (
     <View style={styles.container}>
       <View style={styles.subContainer}>
-        {(router.canGoBack() && pathName !== '/menu') && (
-          <TouchableOpacity style={styles.backButton} onPress={() => router.back()}>
+        {(router.canGoBack() && pathName !== 'Menu') && (
+          <TouchableOpacity style={styles.backButton} onPress={() => router.goBack()}>
             <IconBack />
           </TouchableOpacity>
         )}
 
-        <Image resizeMode='contain' style={styles.logo} source={logo} />
+        <Image resizeMode='contain' style={styles.logo} source={require('@/assets/images/logo/F8_Horizontal_Logo.png')} />
       </View>
 
-      {pathName !== '/menu' && (
-        <TouchableOpacity onPress={() => router.replace('/menu')}>
+      {pathName !== 'Menu' && (
+        <TouchableOpacity onPress={() => router.navigate('Menu' as never)}>
           <IconMenu />
         </TouchableOpacity>
       )}

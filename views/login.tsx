@@ -6,7 +6,7 @@ import { authenticationService, getInitState } from '@/services/authentication'
 import { useStore } from '@/hooks/useStore'
 import { ContainerViewLayout } from '@/components/ContainerView'
 import { ALERT_TYPE, Toast } from 'react-native-alert-notification'
-import { useNavigation } from '@react-navigation/native'
+import { StackActions, useNavigation } from '@react-navigation/native'
 import { Button } from 'react-native-paper'
 
 export default function Login() {
@@ -35,7 +35,7 @@ export default function Login() {
   useEffect(() => {
     if (store.isAuth) {
       // eslint-disable-next-line
-      navigation.navigate('Menu' as never)
+      navigation.dispatch(StackActions.popTo('Menu'))
       toggleLoading(false)
     }
   }, [store])

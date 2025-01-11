@@ -11,7 +11,7 @@ import {
 import { TitleView } from '@/components/TitleView'
 import { logoutService } from '@/services/authentication'
 import { MenuStyles as styles } from '@/styles'
-import { useNavigation } from '@react-navigation/native'
+import { StackActions, useNavigation } from '@react-navigation/native'
 import { Alert, Text, TouchableOpacity, View } from 'react-native'
 
 export default function Menu() {
@@ -26,7 +26,7 @@ export default function Menu() {
         {
           text: 'Confirmar', onPress: async () => {
             await logoutService()
-            router.navigate('Login')
+            router.dispatch(StackActions.replace('Login'))
           }
         },
       ],

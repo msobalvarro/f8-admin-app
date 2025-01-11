@@ -13,13 +13,14 @@ import Service from './views/service'
 import NewProduct from './views/newProduct'
 import Preference from './views/preference'
 import Services from './views/services'
+import { UiNavbar } from './components/ui/Navbar'
 
 
 const RootStack = createNativeStackNavigator({
   initialRouteName: 'Login',
   screenOptions: {
     navigationBarHidden: true,
-    header: () => null
+    header: () => <UiNavbar />
   },
   screens: {
     Login,
@@ -40,7 +41,7 @@ const Navigation = createStaticNavigation(RootStack)
 function App() {
   return (
     <PaperProvider theme={theme}>
-      <AlertNotificationRoot>
+      <AlertNotificationRoot>        
         <NavigationIndependentTree>
           <Navigation />
         </NavigationIndependentTree >
