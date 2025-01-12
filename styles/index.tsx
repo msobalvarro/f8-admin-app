@@ -130,7 +130,6 @@ export const CarousellStyle = StyleSheet.create({
   },
   scroll: {
     flexDirection: 'row',
-    overflowX: 'hidden',
     // gap: 10,
   },
   image: {
@@ -253,14 +252,10 @@ export const MessageItemStyles = StyleSheet.create({
     flex: 1,
   },
   card: {
-    backgroundColor: 'rgba(0, 0, 0, 0.4)',
+    borderWidth: 2,
+    borderColor: 'rgba(255, 255, 255, 0.2)',
     borderRadius: 10,
     padding: 15,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 8,
-    elevation: 5,
   },
   header: {
     fontSize: 18,

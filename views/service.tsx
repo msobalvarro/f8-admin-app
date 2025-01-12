@@ -223,6 +223,8 @@ export default function Service({ route }: { route: any }) {
               <Button
                 style={{ flex: 1 }}
                 loading={loading || isLoading}
+                mode='contained'
+                textColor='#FFF'
                 onPress={updateService}>
                 Guardar
               </Button>
@@ -232,12 +234,16 @@ export default function Service({ route }: { route: any }) {
               ? <Button
                 onPress={updateArchived}
                 style={{ flex: 1 }}
+                mode='contained'
+                textColor='#FFF'
                 loading={loading || isLoading}>
                 Archivar
               </Button>
               : <Button
                 onPress={updateArchived}
                 style={{ flex: 1 }}
+                mode='contained'
+                textColor='#FFF'
                 loading={loading || isLoading}>
                 Activar
               </Button>

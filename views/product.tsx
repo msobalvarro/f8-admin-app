@@ -226,6 +226,8 @@ export default function Product({ route }: { route: any }) {
             {(product !== data || newImages.length > 0) && (
               <Button
                 style={{ flex: 1 }}
+                mode='contained'
+                textColor='#FFF'
                 loading={loading || isLoading}
                 onPress={updateProduct}>Guardar</Button>
             )}
@@ -234,11 +236,15 @@ export default function Product({ route }: { route: any }) {
               ? <Button
                 onPress={updateArchived}
                 style={{ flex: 1 }}
+                mode='contained'
+                textColor='#FFF'
                 loading={loading || isLoading}>Archivar</Button>
               : <Button
                 onPress={updateArchived}
                 style={{ flex: 1 }}
-                loading={loading || isLoading}>Activar</Button>
+                mode='contained'
+                textColor='#FFF'
+                loading={loading || isLoading}>Desarchivar</Button>
             }
           </View>
         </View>
