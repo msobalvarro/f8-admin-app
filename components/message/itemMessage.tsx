@@ -39,7 +39,7 @@ export const MessageCard = ({ message, refetch }: Props) => {
           </View>
         )}
 
-        <Text style={styles.header}>Message from {message.fullName}</Text>
+        <Text style={styles.header}>{message.fullName}</Text>
         <Text style={styles.time}>{dayjs(message.createdAt).format('DD/MM/YY HH:mm A')} ({dayjs(message.createdAt).fromNow()})</Text>
 
         {message.company && (
