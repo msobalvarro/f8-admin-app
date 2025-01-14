@@ -8,6 +8,7 @@ import { useContext, useState } from 'react'
 import { deleteUserService } from '@/services/deleteUser'
 import { UsersContextService } from '@/context'
 import { useNavigation } from '@react-navigation/native'
+import { IconCalendar } from '../Icons'
 
 interface Props {
   users: UserResponse[]
@@ -27,6 +28,12 @@ export const UserList = ({ users }: Props) => {
 
   const RenderItem = ({ item }: { item: UserResponse }) => (
     <View style={styles.card}>
+
+      <View style={styles.dateContainer}>
+        <IconCalendar />
+        <Text style={styles.date}>{dayjs(item.createdAt).format('DD/MM/YY HH:mm A')}</Text>
+      </View>
+
       <View style={styles.containerNames}>
         <Text style={styles.name}>
           {item.name}
@@ -34,8 +41,6 @@ export const UserList = ({ users }: Props) => {
 
         <Text style={styles.username}>@{item.username}</Text>
       </View>
-      <Text style={styles.date}>Creado: {dayjs(item.createdAt).format('DD/MM/YY HH:mm A')}</Text>
-      <Text style={styles.date}>Actualizado: {dayjs(item.updatedAt).format('DD/MM/YY HH:mm A')}</Text>
 
       <View style={styles.containerButtons}>
         <Button
@@ -51,6 +56,7 @@ export const UserList = ({ users }: Props) => {
           Eliminar
         </Button>
       </View>
+
     </View>
   )
 

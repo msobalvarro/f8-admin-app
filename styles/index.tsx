@@ -341,23 +341,21 @@ export const UserListStyles = StyleSheet.create({
     marginTop: 20,
   },
   card: {
-    backgroundColor: 'rgba(0, 0, 0, 0.2)',
+    backgroundColor: 'rgba(0, 0, 0, 0.3)',
     padding: 15,
     marginBottom: 10,
     borderRadius: 8,
     // elevation: 2,
   },
   containerNames: {
-    marginBottom: 10,
-    // padding: 10,
     justifyContent: 'space-between',
-    flexDirection: 'row',
+    // flexDirection: 'row',
     alignItems: 'center',
   },
   name: {
     fontSize: 18,
     fontWeight: 'bold',
-    color: Colors.primary,
+    color: Colors.dark.text,
   },
   username: {
     fontSize: 16,
@@ -366,9 +364,15 @@ export const UserListStyles = StyleSheet.create({
   },
   date: {
     fontSize: 14,
-    color: '#777',
+    color: '#CCCCCC',
   },
-
+  dateContainer: {
+    marginBottom: 20,
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+    gap: 5,
+  },
   containerButtons: {
     marginTop: 10,
     flexDirection: 'row',

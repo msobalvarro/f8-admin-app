@@ -15,7 +15,7 @@ export const createUserService = async (data: Props) => {
     Toast.show({
       title: 'Usuario Creado',
       textBody: `Ya puedes utilizar este usuario`,
-      type: ALERT_TYPE.DANGER,
+      type: ALERT_TYPE.SUCCESS,
     })
 
   } catch (error) {
