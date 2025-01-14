@@ -7,19 +7,21 @@ import { Colors } from '@/constants/colors'
 import { useContext, useState } from 'react'
 import { deleteUserService } from '@/services/deleteUser'
 import { UsersContextService } from '@/context'
+import { useNavigation } from '@react-navigation/native'
 
 interface Props {
   users: UserResponse[]
 }
 
 export const UserList = ({ users }: Props) => {
+  const navigation = useNavigation()
   const context = useContext(UsersContextService)
   const [loading, setLoading] = useState(false)
+  const onUpdatePassword = (user: UserResponse) => navigation.navigate('UpdatePasswordUser' as never, user)
 
   const deleteUser = async (id: string) => {
     setLoading(true)
-    await deleteUserService(id)
-    await context?.refetch()
+    await deleteUserService(id, context?.refetch)
     setLoading(false)
   }
 
@@ -36,9 +38,9 @@ export const UserList = ({ users }: Props) => {
       <Text style={styles.date}>Actualizado: {dayjs(item.updatedAt).format('DD/MM/YY HH:mm A')}</Text>
 
       <View style={styles.containerButtons}>
-
         <Button
           textColor={Colors.primary}
+          onPress={() => onUpdatePassword(item)}
           icon='update'>Actualizar Contraseña</Button>
 
         <Button

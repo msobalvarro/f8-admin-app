@@ -3,9 +3,9 @@ import { axiosInstance } from './axiosInstance'
 import { Alert } from 'react-native'
 import { AxiosError } from 'axios'
 
-export const deleteUserService = async (id: string) => {
+export const deleteUserService = async (id: string, refetch?: () => void) => {
 
-  Alert.alert(
+  await Alert.alert(
     'Confirmar',
     '¿Estás seguro de eliminar este usuario?',
     [
@@ -21,6 +21,7 @@ export const deleteUserService = async (id: string) => {
               type: ALERT_TYPE.SUCCESS,
             })
 
+            refetch?.()
           } catch (error) {
             if (error instanceof AxiosError) {
               Toast.show({

@@ -1,34 +1,35 @@
 import { ContainerViewLayout } from '@/components/ContainerView'
 import { TitleView } from '@/components/TitleView'
+import { UserResponse } from '@/interfaces'
 import { createUserService } from '@/services/newUserService'
+import { updatePasswordService } from '@/services/updatePassword'
 import { NewUserStyles as styles, UiStyles } from '@/styles'
-import { useNavigation } from '@react-navigation/native'
+import { useNavigation, useRoute } from '@react-navigation/native'
 import { useState } from 'react'
 import { TextInput, View } from 'react-native'
 import { ALERT_TYPE, Toast } from 'react-native-alert-notification'
 import { Button } from 'react-native-paper'
 
-export default function NewUser() {
-  const [loading, setLoading] = useState(false)
+export default function UpdatePasswordUser() {
+  const route = useRoute<{ key: string; name: string; params: UserResponse }>()
   const navigation = useNavigation()
-  const [name, setName] = useState('')
-  const [username, setUser] = useState('')
+  const [loading, setLoading] = useState(false)
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
 
-  const onCreateUser = async () => {
+  const onUpdatePassword = async () => {
     setLoading(true)
 
     try {
       if (password.length < 3) {
         throw new Error('Password must be at least 3 characters long')
       }
-      
+
       if (password !== confirmPassword) {
         throw new Error('Password is not correct')
       }
-      
-      await createUserService({ name, username, password })
+
+      await updatePasswordService(route.params._id, password)
 
       navigation.goBack()
     } catch (error) {
@@ -48,23 +49,11 @@ export default function NewUser() {
       <View style={styles.container}>
         <TitleView
           hiddenButton
-          title='Nuevo Usuario F8'
-          subtitle='Al crear un nuevo usuario F8 darás acceso a tus configuraciones F8'
+          title={`Actualizar Contraseña`}
+          subtitle={`Actualiza la contraseña a ${route.params.name}`}
         />
 
         <View style={{ gap: 10 }}>
-          <TextInput
-            placeholder='Nombre'
-            placeholderTextColor='#FFFFFF'
-            value={name}
-            onChangeText={setName}
-            style={UiStyles.InputStyle} />
-          <TextInput
-            placeholder='Usuario'
-            value={username}
-            onChangeText={setUser}
-            placeholderTextColor='#FFFFFF'
-            style={UiStyles.InputStyle} />
           <TextInput
             placeholder='Contraseña'
             value={password}
@@ -85,7 +74,7 @@ export default function NewUser() {
           loading={loading}
           disabled={password.length === 0 && password !== confirmPassword}
           mode='contained'
-          onPress={onCreateUser}
+          onPress={onUpdatePassword}
           textColor='#FFF'>Crear Usuario</Button>
       </View>
     </ContainerViewLayout>
