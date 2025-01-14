@@ -6,8 +6,6 @@ import { View, Text, ScrollView } from 'react-native'
 import { ContactButtons } from './contactCard'
 import { useState } from 'react'
 import { handledArchiveMessage, handleDeleteMessage } from '@/services/messageServices'
-import { IconArchive, IconTrash, IconUndo } from '../Icons'
-import { theme } from '@/constants/constanst'
 import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime'
 import { Colors } from '@/constants/colors'
@@ -35,7 +33,7 @@ export const MessageCard = ({ message, refetch }: Props) => {
       <View style={styles.card}>
         {message?.archived && (
           <View style={{ alignItems: 'flex-start' }}>
-            <Badge>Archivado</Badge>
+            <Badge style={{ paddingHorizontal: 10 }}>Archivado</Badge>
           </View>
         )}
 

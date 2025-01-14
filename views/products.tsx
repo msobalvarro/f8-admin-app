@@ -1,6 +1,5 @@
 import { ContainerViewLayout } from '@/components/ContainerView'
 import { ProductItem } from '@/components/product/productItemList'
-import { ProductSkeleton } from '@/components/product/productSkeleton'
 import { TitleView } from '@/components/TitleView'
 import { useAxios } from '@/hooks/useFetch'
 import { ProductsResponse } from '@/interfaces'

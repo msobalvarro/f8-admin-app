@@ -29,7 +29,7 @@ export const ServiceItem = ({ service }: Props) => {
           </Text>
 
           <View style={styles.subContainerInformation}>
-            {service.archived && <Badge>Archivado</Badge>}
+            {service.archived && <Badge style={{ paddingHorizontal: 10 }}>Archivado</Badge>}
             {service.pinned && <IconPin />}
           </View>
         </View>
