@@ -73,6 +73,11 @@ export default function Menu() {
           <Text style={styles.text}>Preferencias</Text>
         </TouchableOpacity>
 
+        <TouchableOpacity style={styles.button} onPress={() => router.navigate('Users' as never)}>
+          <IconPreference />
+          <Text style={styles.text}>Usuarios F8</Text>
+        </TouchableOpacity>
+
         <TouchableOpacity style={styles.button} onPress={logout}>
           <IconLogoutProductMenu />
           <Text style={styles.text}>Cerrar Sesión</Text>

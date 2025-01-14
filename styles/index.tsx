@@ -334,3 +334,52 @@ export const ContactButtonsStyles = StyleSheet.create({
     flex: 1,
   }
 })
+
+export const UserListStyles = StyleSheet.create({
+  container: {
+    // padding: 16,
+    marginTop: 20,
+  },
+  card: {
+    backgroundColor: 'rgba(0, 0, 0, 0.2)',
+    padding: 15,
+    marginBottom: 10,
+    borderRadius: 8,
+    // elevation: 2,
+  },
+  containerNames: {
+    marginBottom: 10,
+    // padding: 10,
+    justifyContent: 'space-between',
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  name: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: Colors.primary,
+  },
+  username: {
+    fontSize: 16,
+    color: '#555',
+    marginVertical: 4,
+  },
+  date: {
+    fontSize: 14,
+    color: '#777',
+  },
+
+  containerButtons: {
+    marginTop: 10,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    gap: 10,
+  },
+})
+
+export const NewUserStyles = StyleSheet.create({
+  container: {
+    paddingVertical: 30,
+    gap: 20,
+  },
+})

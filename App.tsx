@@ -17,6 +17,8 @@ import Service from './views/service'
 import NewProduct from './views/newProduct'
 import Preference from './views/preference'
 import Services from './views/services'
+import Users from './views/users'
+import NewUser from './views/newUser'
 
 
 const RootStack = createNativeStackNavigator({
@@ -35,7 +37,9 @@ const RootStack = createNativeStackNavigator({
     Product,
     Services,
     Service,
-    Preference
+    Preference,
+    Users,
+    NewUser
   },
 })
 

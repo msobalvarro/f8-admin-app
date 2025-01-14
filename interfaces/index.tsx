@@ -65,3 +65,15 @@ export interface ServicesPropierties {
 export interface PreferenceContext {
   refetch: () => void
 }
+
+export interface UsersContext {
+  refetch: () => void
+}
+
+export interface UserResponse {
+  _id: string
+  name: string
+  username: string
+  createdAt: string
+  updatedAt: string
+}
