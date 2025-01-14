@@ -345,12 +345,13 @@ export const UserListStyles = StyleSheet.create({
     padding: 15,
     marginBottom: 10,
     borderRadius: 8,
+    gap: 15,
     // elevation: 2,
   },
   containerNames: {
     justifyContent: 'space-between',
     // flexDirection: 'row',
-    alignItems: 'center',
+    // alignItems: 'center',
   },
   name: {
     fontSize: 18,
@@ -367,14 +368,14 @@ export const UserListStyles = StyleSheet.create({
     color: '#CCCCCC',
   },
   dateContainer: {
-    marginBottom: 20,
+    // marginBottom: 20,
     flexDirection: 'row',
     justifyContent: 'flex-end',
     alignItems: 'center',
     gap: 5,
   },
   containerButtons: {
-    marginTop: 10,
+    // marginTop: 10,
     flexDirection: 'row',
     justifyContent: 'space-between',
     gap: 10,

@@ -8,6 +8,7 @@ import { ProductsStyles as styles, UiStyles } from '@/styles'
 import { Text, TextInput, View } from 'react-native'
 import { useState } from 'react'
 import { useNavigation } from '@react-navigation/native'
+import { Searchbar } from 'react-native-paper'
 
 export default function Services() {
   const navigation = useNavigation()
@@ -30,13 +31,7 @@ export default function Services() {
           subtitle='Administra todos tus servicios, agrega nuevas historias de servicios realizados y elimina los que ya no necesites'
           onClickAdd={onNewProduct} />
 
-        <TextInput
-          placeholderTextColor='#CCC'
-          placeholder='Buscar servicio'
-          style={[UiStyles.InputStyle, { width: '100%', fontSize: 20 }]}
-          value={filter}
-          keyboardType='default'
-          onChangeText={setFilter} />
+        <Searchbar style={{ backgroundColor: 'rgba(250,250,250,0.1)' }} placeholder='buscar servicio' onChangeText={setFilter} value={filter} />
       </View>
 
 
