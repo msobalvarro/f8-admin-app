@@ -230,7 +230,7 @@ export const MenuStyles = StyleSheet.create({
   },
   text: {
     color: '#FFF',
-    fontSize: 32,
+    fontSize: 28,
   },
 })
 

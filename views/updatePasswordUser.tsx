@@ -1,7 +1,6 @@
 import { ContainerViewLayout } from '@/components/ContainerView'
 import { TitleView } from '@/components/TitleView'
 import { UserResponse } from '@/interfaces'
-import { createUserService } from '@/services/newUserService'
 import { updatePasswordService } from '@/services/updatePassword'
 import { NewUserStyles as styles, UiStyles } from '@/styles'
 import { useNavigation, useRoute } from '@react-navigation/native'
@@ -42,7 +41,6 @@ export default function UpdatePasswordUser() {
       setLoading(false)
     }
   }
-
 
   return (
     <ContainerViewLayout scroll>

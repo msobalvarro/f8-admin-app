@@ -6,7 +6,8 @@ import {
   IconNewServiceListMenu,
   IconPreference,
   IconProductListMenu,
-  IconServiceListMenu
+  IconServiceListMenu,
+  IconUsers
 } from '@/components/Icons'
 import { TitleView } from '@/components/TitleView'
 import { logoutService } from '@/services/authentication'
@@ -74,7 +75,7 @@ export default function Menu() {
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.button} onPress={() => router.navigate('Users' as never)}>
-          <IconPreference />
+          <IconUsers />
           <Text style={styles.text}>Usuarios F8</Text>
         </TouchableOpacity>
 

@@ -23,4 +23,5 @@ export const IconArchive = () => <IconIonic name='archive' size={24} color={Colo
 export const IconImages = () => <IconIonic name='images' size={24} color={Colors.light.background} />
 export const IconMainMenu = () => <IconIonic name='apps' size={24} color={Colors.primary} />
 export const IconUndo = () => <IconFontAwsome name='undo' size={24} color={Colors.primary} />
+export const IconUsers = () => <IconFontAwsome name='users' size={24} color={Colors.light.background} />
 
