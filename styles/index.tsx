@@ -388,3 +388,15 @@ export const NewUserStyles = StyleSheet.create({
     gap: 20,
   },
 })
+
+export const NewPreferenceStyles = StyleSheet.create({
+  container: {
+    backgroundColor: Colors.backgroundLayout,
+    padding: 20,
+    borderRadius: 10,
+    elevation: 5,
+    width: '90%',
+    alignSelf: 'center',
+    gap:10,
+  }
+})

@@ -31,7 +31,7 @@ export default function Preference() {
             ))}
           </View>
 
-          {showModal && <NewPreference />}
+          <NewPreference onRefetch={refetch} isVisible={showModal} toggleModal={toggleModal} />
         </View>
       </ContainerViewLayout>
     </PreferenceContextService.Provider>
