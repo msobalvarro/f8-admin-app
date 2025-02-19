@@ -1,15 +1,23 @@
+import { Colors } from '@/constants/colors'
 import { JobsResponse } from '@/interfaces'
+import { deleteJobService } from '@/services/deleteJob'
 import { ItemJobStyles as styles } from '@/styles'
 import { useState } from 'react'
 import { View, Text, Image } from 'react-native'
 import { Button } from 'react-native-paper'
-import { Colors } from 'react-native/Libraries/NewAppScreen'
 
-export const JobItem = ({ job }: { job: JobsResponse }) => {
+type Props = {
+  job: JobsResponse
+  refetch: () => void
+}
+
+export const JobItem = ({ job, refetch }: Props) => {
   const [loading, setLoading] = useState(false)
 
   const handleDelete = async () => {
-    // await handleDeleteMessage(message._id, setLoading, refetch)
+    setLoading(true)
+    await deleteJobService(job._id, refetch)
+    setLoading(false)
   }
 
   const handledArchive = async () => {
@@ -49,7 +57,7 @@ export const JobItem = ({ job }: { job: JobsResponse }) => {
             loading={loading}
             textColor={Colors.primary}
             icon='archive'
-            onPress={handledArchive}>Archivar</Button>
+            onPress={handledArchive}>Activar</Button>
         )}
 
         {job?.active && (
@@ -57,8 +65,14 @@ export const JobItem = ({ job }: { job: JobsResponse }) => {
             loading={loading}
             textColor={Colors.primary}
             icon='undo'
-            onPress={handledArchive}>Recuperar</Button>
+            onPress={handledArchive}>Desactivar</Button>
         )}
+
+        <Button
+          loading={loading}
+          textColor={Colors.primaryLight}
+          icon='edit'
+          onPress={handledArchive}>Editar</Button>
 
         <Button
           loading={loading}
