@@ -20,6 +20,7 @@ import Services from './views/services'
 import Users from './views/users'
 import NewUser from './views/newUser'
 import UpdatePasswordUser from './views/updatePasswordUser'
+import Jobs from './views/jobs'
 
 
 const RootStack = createNativeStackNavigator({
@@ -41,7 +42,8 @@ const RootStack = createNativeStackNavigator({
     Preference,
     Users,
     NewUser,
-    UpdatePasswordUser
+    UpdatePasswordUser,
+    Jobs
   },
 })
 

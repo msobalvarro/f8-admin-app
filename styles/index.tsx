@@ -92,8 +92,7 @@ export const ProductsStyles = StyleSheet.create({
   productContainer: {
     borderRadius: 10,
     overflow: 'hidden',
-    borderColor: 'rgba(255,255,255, 0.2)',
-    borderWidth: 5,
+    backgroundColor: Colors.cardBackgrond,
     gap: 25,
     padding: 20,
   },
@@ -107,7 +106,7 @@ export const ProductsStyles = StyleSheet.create({
 
   productTitle: {
     fontSize: 20,
-    color: '#FFF',
+    color: Colors.primaryLight,
   },
 
   description: {
@@ -220,7 +219,7 @@ export const MenuStyles = StyleSheet.create({
     paddingVertical: 30,
   },
   button: {
-    gap: 10,
+    gap: 15,
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: 10,
@@ -252,15 +251,14 @@ export const MessageItemStyles = StyleSheet.create({
     flex: 1,
   },
   card: {
-    borderWidth: 2,
-    borderColor: 'rgba(255, 255, 255, 0.2)',
+    backgroundColor: Colors.cardBackgrond,
     borderRadius: 10,
     padding: 15,
   },
   header: {
     fontSize: 18,
     fontWeight: 'bold',
-    color: '#FFF',
+    color: Colors.primaryLight,
   },
   time: {
     fontSize: 14,
@@ -341,7 +339,7 @@ export const UserListStyles = StyleSheet.create({
     marginTop: 20,
   },
   card: {
-    backgroundColor: 'rgba(0, 0, 0, 0.3)',
+    backgroundColor: Colors.cardBackgrond,
     padding: 15,
     marginBottom: 10,
     borderRadius: 8,
@@ -351,12 +349,13 @@ export const UserListStyles = StyleSheet.create({
   containerNames: {
     justifyContent: 'space-between',
     // flexDirection: 'row',
-    // alignItems: 'center',
+    alignItems: 'center',
   },
   name: {
     fontSize: 18,
     fontWeight: 'bold',
-    color: Colors.dark.text,
+    textAlign: 'center',
+    color: Colors.primaryLight,
   },
   username: {
     fontSize: 16,
@@ -397,6 +396,98 @@ export const NewPreferenceStyles = StyleSheet.create({
     elevation: 5,
     width: '90%',
     alignSelf: 'center',
-    gap:10,
+    gap: 10,
+  }
+})
+
+export const JobsStyles = StyleSheet.create({
+  container: {
+    paddingVertical: 20,
+    gap: 20
+  }
+})
+
+
+export const ItemJobStyles = StyleSheet.create({
+  container: {
+    backgroundColor: Colors.cardBackgrond,
+    borderRadius: 12,
+    padding: 16,
+    marginVertical: 8,
+    shadowColor: '#000',
+    shadowOpacity: 0.2,
+    shadowRadius: 5,
+    elevation: 5,
+  },
+  image: {
+    width: '100%',
+    height: 150,
+    borderRadius: 10,
+    marginBottom: 10,
+  },
+  content: {
+    flexDirection: 'column',
+  },
+  title: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#00BFFF',
+  },
+  location: {
+    fontSize: 14,
+    color: '#A0A0A0',
+    marginBottom: 6,
+  },
+  description: {
+    fontSize: 14,
+    color: '#E0E0E0',
+  },
+  tagsContainer: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    marginTop: 8,
+  },
+  tag: {
+    backgroundColor: '#007BFF',
+    paddingHorizontal: 10,
+    paddingVertical: 4,
+    borderRadius: 12,
+    marginRight: 6,
+    marginBottom: 6,
+  },
+  tagText: {
+    color: '#FFF',
+    fontSize: 12,
+  },
+  status: {
+    marginTop: 10,
+    alignSelf: 'flex-end',
+    paddingHorizontal: 10,
+    paddingVertical: 4,
+    borderRadius: 12,
+  },
+  active: {
+    backgroundColor: '#28A745',
+  },
+  inactive: {
+    backgroundColor: '#DC3545',
+  },
+  statusText: {
+    color: '#FFF',
+    fontSize: 12,
+    fontWeight: 'bold',
+  },
+
+  containerButtons: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    gap: 10,
+    marginTop: 20,
+  },
+
+  containerTitle: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center'
   }
 })

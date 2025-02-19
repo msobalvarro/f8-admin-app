@@ -1,6 +1,7 @@
 import { ContainerViewLayout } from '@/components/ContainerView'
 import {
   IconCreateProductMenu,
+  IconJobsMenu,
   IconLogoutProductMenu,
   IconMessageMenu,
   IconNewServiceListMenu,
@@ -77,6 +78,11 @@ export default function Menu() {
         <TouchableOpacity style={styles.button} onPress={() => router.navigate('Users' as never)}>
           <IconUsers />
           <Text style={styles.text}>Usuarios F8</Text>
+        </TouchableOpacity>
+        
+        <TouchableOpacity style={styles.button} onPress={() => router.navigate('Jobs' as never)}>
+          <IconJobsMenu />
+          <Text style={styles.text}>Empleos</Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.button} onPress={logout}>

@@ -77,3 +77,15 @@ export interface UserResponse {
   createdAt: string
   updatedAt: string
 }
+
+export type JobsResponse = {
+  _id: string
+  title: string
+  location: string
+  description: string
+  image?: string | null
+  tags: string[]
+  active: boolean
+  createdAt: string
+  updatedAt: string
+}

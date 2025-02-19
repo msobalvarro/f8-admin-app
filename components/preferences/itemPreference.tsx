@@ -108,8 +108,7 @@ export const ItemPreference = ({ preference }: Props) => {
 
 const styles = StyleSheet.create({
   container: {
-    borderWidth: 2,
-    borderColor: 'rgba(255, 255, 255, 0.3)',
+    backgroundColor: '#1E1E1E',
     borderRadius: 10,
     padding: 20,
     flexDirection: 'column',

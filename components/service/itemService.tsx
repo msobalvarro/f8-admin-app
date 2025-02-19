@@ -14,7 +14,7 @@ export const ServiceItem = ({ service }: Props) => {
   const navigation = useNavigation()
 
   const handleEditService = () => {
-    // Navigate to edit product screen
+    // eslint-disable-next-line
     navigation.navigate(`Service` as never, { id: service._id } as any)
   }
 
