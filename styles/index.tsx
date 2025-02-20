@@ -407,7 +407,6 @@ export const JobsStyles = StyleSheet.create({
   }
 })
 
-
 export const ItemJobStyles = StyleSheet.create({
   container: {
     backgroundColor: Colors.cardBackgrond,
@@ -421,7 +420,7 @@ export const ItemJobStyles = StyleSheet.create({
   },
   image: {
     width: '100%',
-    height: 150,
+    aspectRatio: 1,
     borderRadius: 10,
     marginBottom: 10,
   },
@@ -505,7 +504,6 @@ export const TagStyles = StyleSheet.create({
   },
   input: UiStyles.InputStyle
 })
-
 
 export const tagsInputStyles = StyleSheet.create({
   tagsContainer: {

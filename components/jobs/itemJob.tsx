@@ -6,6 +6,7 @@ import { useState } from 'react'
 import { View, Text, Image } from 'react-native'
 import { Button } from 'react-native-paper'
 import { TagsPreview } from './tagsPreview'
+import { imageOrigin } from '@/constants/constanst'
 
 type Props = {
   job: JobsResponse
@@ -27,7 +28,7 @@ export const JobItem = ({ job, refetch }: Props) => {
 
   return (
     <View style={styles.container}>
-      {job?.image && <Image source={{ uri: job.image }} style={styles.image} />}
+      {job?.image && <Image source={{ uri: `${imageOrigin}${job.image}` }} style={styles.image} resizeMode='cover' />}
 
       <View style={styles.containerTitle}>
         <Text style={styles.title}>{job.title}</Text>
@@ -66,7 +67,7 @@ export const JobItem = ({ job, refetch }: Props) => {
         <Button
           loading={loading}
           textColor={Colors.primaryLight}
-          icon='edit'
+          icon='pen'
           onPress={handledArchive}>Editar</Button>
 
         <Button

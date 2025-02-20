@@ -2,6 +2,7 @@ import { ProductsResponse } from '@/interfaces'
 import { axiosInstance } from './axiosInstance'
 import { uploadImageService } from './uploadImage'
 import { Asset } from 'react-native-image-picker'
+import { AxiosError } from 'axios'
 
 interface Props {
   title: string
@@ -15,7 +16,7 @@ export const createJobService = async ({ title, description, image, tags, locati
   try {
     const imageName = image ? await uploadImageService(image) : null
 
-    const newProduct = await axiosInstance.post<ProductsResponse>('/products', {
+    const newProduct = await axiosInstance.post<ProductsResponse>('/jobs', {
       ...(imageName && { image: imageName }),
       title,
       description,
@@ -25,6 +26,10 @@ export const createJobService = async ({ title, description, image, tags, locati
 
     return newProduct.data
   } catch (error) {
+    if (error instanceof AxiosError) {
+      throw new Error(String(error.response?.data))
+    }
+
     throw new Error(String(error))
   }
 }

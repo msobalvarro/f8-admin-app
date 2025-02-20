@@ -14,7 +14,7 @@ export const uploadImageService = async (image: Asset): Promise<string> => {
 
   try {
     let { data } = await axios.post<FileUploadedResponse>(
-      `${serverAddress}/images`,
+      `${serverAddress}/files`,
       formData,
       {
         headers: {
@@ -26,6 +26,8 @@ export const uploadImageService = async (image: Asset): Promise<string> => {
 
     return data.fileName
   } catch (error) {
+    console.log(error)
+    
     if (error instanceof AxiosError) {
       throw new Error(error.response?.data?.error)
     } else {

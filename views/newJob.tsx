@@ -72,7 +72,7 @@ export default function NewJob() {
               source={String(image.uri)} />}
         </View>
 
-        <AddImagesButton onClick={handleImage} />
+        {!image && <AddImagesButton onClick={handleImage} />}
 
         <View style={styles.inputContainer}>
           <TextInput
@@ -81,7 +81,7 @@ export default function NewJob() {
             onChangeText={setTitle}
             style={UiStyles.InputStyle}
             placeholder='Titulo del Empleo' />
-          
+
           <TextInput
             value={location}
             placeholderTextColor='#CCC'
@@ -97,7 +97,7 @@ export default function NewJob() {
             style={[UiStyles.InputStyle, { minHeight: 200, textAlignVertical: 'top' }]}
             placeholder='Escriba una descripción del Empleo' />
 
-            <TagsInput onChangeTags={setTags} />
+          <TagsInput onChangeTags={setTags} />
         </View>
 
         <Button icon='plus' mode='contained' textColor='#FFF' loading={loading} onPress={submit}>
