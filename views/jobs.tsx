@@ -8,8 +8,11 @@ import { JobsResponse } from '@/interfaces'
 import { Searchbar, Switch, Text } from 'react-native-paper'
 import { Colors } from '@/constants/colors'
 import { JobItem } from '@/components/jobs/itemJob'
+import { UpdateAndNewJob } from '@/components/jobs/newJob'
+import { useNavigation } from '@react-navigation/native'
 
 export default function Jobs() {
+  const navigation = useNavigation()
   const [showActive, setActive] = useState(true)
   const [filter, setFilter] = useState('')
   const { data: jobs, isLoading, refetch } = useAxios<JobsResponse[]>({
@@ -26,11 +29,13 @@ export default function Jobs() {
     refetch()
   }, [showActive])
 
+  const onNewJob = () => navigation.navigate('NewJob' as never)
+
   return (
     <ContainerViewLayout scroll isLoading={isLoading} onRefresh={refetch}>
       <View style={styles.container}>
         <TitleView
-          hiddenButton
+          onClickAdd={onNewJob}
           title='Empleos F8'
           subtitle='Administra tus empleos que se muestran en el sitio F8' />
 
@@ -45,7 +50,7 @@ export default function Jobs() {
 
           {/* {isLoading && <MessageSkeleton />} */}
 
-          {!isLoading && dataFilter?.map((jobs, i) => (<JobItem job={jobs} key={i} />))}
+          {!isLoading && dataFilter?.map((jobs, i) => (<JobItem refetch={refetch} job={jobs} key={i} />))}
 
           {!isLoading && dataFilter?.length == 0 && (
             <Text style={{ color: 'rgba(255, 255, 255, 0.3)', fontSize: 24, alignSelf: 'center' }}>

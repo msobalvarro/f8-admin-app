@@ -5,6 +5,7 @@ import { ItemJobStyles as styles } from '@/styles'
 import { useState } from 'react'
 import { View, Text, Image } from 'react-native'
 import { Button } from 'react-native-paper'
+import { TagsPreview } from './tagsPreview'
 
 type Props = {
   job: JobsResponse
@@ -42,13 +43,7 @@ export const JobItem = ({ job, refetch }: Props) => {
           {job.description}
         </Text>
 
-        <View style={styles.tagsContainer}>
-          {job.tags.map((tag) => (
-            <View key={tag} style={styles.tag}>
-              <Text style={styles.tagText}>{tag}</Text>
-            </View>
-          ))}
-        </View>
+        <TagsPreview tags={job.tags} />
       </View>
 
       <View style={styles.containerButtons}>

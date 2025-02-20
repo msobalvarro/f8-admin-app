@@ -89,7 +89,7 @@ export default function NewService() {
             onChangeText={setDescription}
             multiline
             numberOfLines={4}
-            style={[UiStyles.InputStyle, { height: 200 }]}
+            style={[UiStyles.InputStyle, { minHeight: 200, textAlignVertical: 'top' }]}
             placeholder='Escriba una descripción clara del servicio' />
         </View>
 

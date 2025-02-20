@@ -6,34 +6,36 @@ import { Button, Checkbox } from 'react-native-paper'
 import { UiStyles } from '@/styles'
 import { TitleView } from '@/components/TitleView'
 import { handleImagePickerService } from '@/services/imagePicker'
-import { createProductService } from '@/services/createProduct'
 import { ALERT_TYPE, Toast } from 'react-native-alert-notification'
 import { Asset } from 'react-native-image-picker'
 import { AddImagesButton } from '@/components/product/addImagesButton'
 import { useNavigation } from '@react-navigation/native'
-import { Colors } from '@/constants/colors'
+import { createJobService } from '@/services/createJob'
+import { TagsInput } from '@/components/jobs/tagsInput'
 
-export default function NewProduct() {
+export default function NewJob() {
   const navigation = useNavigation()
   const [loading, setLoading] = useState(false)
-  const [images, setImages] = useState<Asset[]>([])
-  const [name, setName] = useState('')
+  const [image, setImage] = useState<Asset | null>(null)
+  const [title, setTitle] = useState('')
+  const [tags, setTags] = useState<string[]>([])
   const [description, setDescription] = useState('')
-  const [pinned, setPinned] = useState(false)
+  const [location, setLocation] = useState('')
 
   const handleImage = async () => {
-    const newImages = await handleImagePickerService()
-    setImages([...images, ...newImages])
+    const newImages = await handleImagePickerService(1)
+    setImage(newImages[0])
   }
 
   const submit = async () => {
     setLoading(true)
     try {
-      await createProductService({
-        imagesList: images,
+      await createJobService({
+        image,
         description,
-        name,
-        pinned
+        title,
+        location,
+        tags
       })
 
       Toast.show({
@@ -58,39 +60,44 @@ export default function NewProduct() {
     <ContainerViewLayout scroll>
       <View style={styles.container}>
         <TitleView
-          title='Nuevo Producto'
-          subtitle='Agrega un nuevo producto a tu pagina web, agrega imagenes y una descripción'
+          title='Nuevo Empleo'
+          subtitle='Agrega un nuevo emplo para mostar en la pagina web'
           hiddenButton />
 
-        <Checkbox.Item
-          label='Fijar en la pagina web F8 principal'
-          disabled={loading}
-          status={pinned ? 'checked' : 'unchecked'}
-          onPress={() => setPinned(!pinned)} />
 
         <View style={styles.imageContainer}>
-          {images.map((image, i) =>
+          {image &&
             <ProductImage
-              onDelete={() => setImages(images.filter((_, index) => index !== i))}
-              key={i}
-              source={String(image.uri)} />)}
+              onDelete={() => setImage(null)}
+              source={String(image.uri)} />}
         </View>
 
         <AddImagesButton onClick={handleImage} />
 
         <View style={styles.inputContainer}>
           <TextInput
+            value={title}
             placeholderTextColor='#CCC'
-            onChangeText={setName}
+            onChangeText={setTitle}
             style={UiStyles.InputStyle}
-            placeholder='Nombre del Producto' />
+            placeholder='Titulo del Empleo' />
+          
+          <TextInput
+            value={location}
+            placeholderTextColor='#CCC'
+            onChangeText={setLocation}
+            style={UiStyles.InputStyle}
+            placeholder='Ubicación' />
 
           <TextInput
             placeholderTextColor='#CCC'
+            value={description}
             onChangeText={setDescription}
             multiline
             style={[UiStyles.InputStyle, { minHeight: 200, textAlignVertical: 'top' }]}
-            placeholder='Escriba una descripción del producto' />
+            placeholder='Escriba una descripción del Empleo' />
+
+            <TagsInput onChangeTags={setTags} />
         </View>
 
         <Button icon='plus' mode='contained' textColor='#FFF' loading={loading} onPress={submit}>

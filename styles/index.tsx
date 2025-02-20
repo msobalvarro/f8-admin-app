@@ -442,19 +442,6 @@ export const ItemJobStyles = StyleSheet.create({
     fontSize: 14,
     color: '#E0E0E0',
   },
-  tagsContainer: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    marginTop: 8,
-  },
-  tag: {
-    backgroundColor: '#007BFF',
-    paddingHorizontal: 10,
-    paddingVertical: 4,
-    borderRadius: 12,
-    marginRight: 6,
-    marginBottom: 6,
-  },
   tagText: {
     color: '#FFF',
     fontSize: 12,
@@ -490,4 +477,52 @@ export const ItemJobStyles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center'
   }
+})
+
+export const TagStyles = StyleSheet.create({
+  container: {},
+  tagsContainer: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 10,
+    marginTop: 10,
+  },
+  tag: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: Colors.primaryLight,
+    padding: 5,
+    paddingHorizontal: 10,
+    borderRadius: 20,
+  },
+  tagText: {
+    marginRight: 5,
+    color: Colors.light.text,
+  },
+  removeTag: {
+    color: Colors.delete,
+    fontWeight: 'bold',
+  },
+  input: UiStyles.InputStyle
+})
+
+
+export const tagsInputStyles = StyleSheet.create({
+  tagsContainer: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    marginTop: 8,
+  },
+  tag: {
+    backgroundColor: '#007BFF',
+    paddingHorizontal: 10,
+    paddingVertical: 4,
+    borderRadius: 12,
+    marginRight: 6,
+    marginBottom: 6,
+  },
+  tagText: {
+    color: '#FFF',
+    fontSize: 12,
+  },
 })
