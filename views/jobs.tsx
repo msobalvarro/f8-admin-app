@@ -8,7 +8,6 @@ import { JobsResponse } from '@/interfaces'
 import { Searchbar, Switch, Text } from 'react-native-paper'
 import { Colors } from '@/constants/colors'
 import { JobItem } from '@/components/jobs/itemJob'
-import { UpdateAndNewJob } from '@/components/jobs/newJob'
 import { useNavigation } from '@react-navigation/native'
 
 export default function Jobs() {
@@ -44,7 +43,7 @@ export default function Jobs() {
           <Text style={{ color: Colors.dark.text }}>Mostrar Empleos Activos</Text>
         </View>
 
-        <Searchbar style={{ backgroundColor: 'rgba(250,250,250,0.1)' }} placeholder='buscar por empleo, descripción,' onChangeText={setFilter} value={filter} />
+        <Searchbar style={{ backgroundColor: 'rgba(250,250,250,0.1)' }} placeholder='buscar por empleo, descripción' onChangeText={setFilter} value={filter} />
 
         <View style={{ gap: 20 }}>
 

@@ -7,6 +7,7 @@ import { View, Text, Image } from 'react-native'
 import { Button } from 'react-native-paper'
 import { TagsPreview } from './tagsPreview'
 import { imageOrigin } from '@/constants/constanst'
+import { updatetStatusJob } from '@/services/updateStatusJob'
 
 type Props = {
   job: JobsResponse
@@ -22,8 +23,10 @@ export const JobItem = ({ job, refetch }: Props) => {
     setLoading(false)
   }
 
-  const handledArchive = async () => {
-    // await handledArchiveMessage(message._id, setLoading, refetch)
+  const handleUpdateStatus = async () => {
+    setLoading(true)
+    await updatetStatusJob(job._id, job.active, refetch)
+    setLoading(false)
   }
 
   return (
@@ -48,35 +51,36 @@ export const JobItem = ({ job, refetch }: Props) => {
       </View>
 
       <View style={styles.containerButtons}>
-        {!job?.active && (
-          <Button
-            loading={loading}
-            textColor={Colors.primary}
-            icon='archive'
-            onPress={handledArchive}>Activar</Button>
-        )}
-
-        {job?.active && (
-          <Button
-            loading={loading}
-            textColor={Colors.primary}
-            icon='undo'
-            onPress={handledArchive}>Desactivar</Button>
-        )}
-
         <Button
-          loading={loading}
-          textColor={Colors.primaryLight}
-          icon='pen'
-          onPress={handledArchive}>Editar</Button>
-
-        <Button
-          loading={loading}
+          disabled={loading}
           textColor={Colors.delete}
           icon='delete'
           onPress={handleDelete}>
           Eliminar
         </Button>
+
+        {!job?.active && (
+          <Button
+            disabled={loading}
+            textColor={Colors.primary}
+            icon='undo'
+            onPress={handleUpdateStatus}>Activar</Button>
+        )}
+
+        {job?.active && (
+          <Button
+            disabled={loading}
+            textColor={Colors.primary}
+            icon='archive'
+            onPress={handleUpdateStatus}>Desactivar</Button>
+        )}
+
+        <Button
+          disabled={loading}
+          textColor={Colors.primaryLight}
+          icon='pen'
+          onPress={handleUpdateStatus}>Editar</Button>
+
       </View>
 
     </View>

@@ -1,8 +1,8 @@
 import { ContainerViewLayout } from '@/components/ContainerView'
 import { useState } from 'react'
-import { StyleSheet, Text, TextInput, View } from 'react-native'
+import { StyleSheet, TextInput, View } from 'react-native'
 import { ProductImage } from '@/components/product/productImage'
-import { Button, Checkbox } from 'react-native-paper'
+import { Button } from 'react-native-paper'
 import { UiStyles } from '@/styles'
 import { TitleView } from '@/components/TitleView'
 import { handleImagePickerService } from '@/services/imagePicker'
@@ -45,7 +45,7 @@ export default function NewJob() {
         onPress: () => console.log('click'),
       })
 
-      navigation.navigate('Products' as never)
+      navigation.navigate('Jobs' as never)
     } catch (error) {
       Toast.show({
         title: String(error),
@@ -63,7 +63,6 @@ export default function NewJob() {
           title='Nuevo Empleo'
           subtitle='Agrega un nuevo emplo para mostar en la pagina web'
           hiddenButton />
-
 
         <View style={styles.imageContainer}>
           {image &&
