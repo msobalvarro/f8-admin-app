@@ -1,14 +1,22 @@
 import { TagStyles as styles } from '@/styles'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { View, Text, TextInput, TouchableOpacity } from 'react-native'
 
 type Props = {
   onChangeTags: (tags: string[]) => void
+  isEdit?: boolean
+  defaultValue?: string[]
 }
 
-export const TagsInput = ({ onChangeTags }: Props) => {
+export const TagsInput = ({ onChangeTags, defaultValue }: Props) => {
   const [tags, setTags] = useState<string[]>([])
   const [text, setText] = useState('')
+
+  useEffect(() => {
+    if (defaultValue) {
+      setTags(defaultValue)
+    }
+  }, [defaultValue])
 
   const addTag = () => {
     if (text.trim() !== '' && !tags.includes(text.trim())) {

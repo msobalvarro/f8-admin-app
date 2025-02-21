@@ -39,9 +39,9 @@ export default function NewJob() {
       })
 
       Toast.show({
-        title: 'Producto Agregado',
+        title: 'Empleo Agregado',
         type: ALERT_TYPE.SUCCESS,
-        textBody: 'El producto se ha agregado correctamente, haz click para ver',
+        textBody: 'El empleo se ha agregado correctamente',
         onPress: () => console.log('click'),
       })
 

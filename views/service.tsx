@@ -14,10 +14,14 @@ import { Button, Checkbox } from 'react-native-paper'
 import { useEffect, useState } from 'react'
 import { Alert, TextInput, View } from 'react-native'
 import { Toast, ALERT_TYPE } from 'react-native-alert-notification'
-import { useNavigation } from '@react-navigation/native'
+import { StaticScreenProps, useNavigation } from '@react-navigation/native'
 import { Asset } from 'react-native-image-picker'
 
-export default function Service({ route }: { route: any }) {
+type Props = StaticScreenProps<{
+  id: string
+}>
+
+export default function Service({ route }: Props) {
   const navigation = useNavigation()
   const { id } = route.params
   const [service, setService] = useState<ServicesPropierties | null>(null)

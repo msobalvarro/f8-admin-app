@@ -38,9 +38,9 @@ export default function Jobs() {
           title='Empleos F8'
           subtitle='Administra tus empleos que se muestran en el sitio F8' />
 
-        <View style={{ alignItems: 'center', flexDirection: 'row' }}>
+        <View style={{ alignItems: 'center', flexDirection: 'row', justifyContent: 'center' }}>
+          <Text style={{ color: Colors.dark.text }}>Mostrar empleos activos</Text>
           <Switch value={showActive} onChange={_ => setActive(!showActive)} />
-          <Text style={{ color: Colors.dark.text }}>Mostrar Empleos Activos</Text>
         </View>
 
         <Searchbar style={{ backgroundColor: 'rgba(250,250,250,0.1)' }} placeholder='buscar por empleo, descripción' onChangeText={setFilter} value={filter} />

@@ -1,5 +1,5 @@
 import { Colors } from '@/constants/colors'
-import { JobsResponse } from '@/interfaces'
+import { JobsResponse, NavigateParamList } from '@/interfaces'
 import { deleteJobService } from '@/services/deleteJob'
 import { ItemJobStyles as styles } from '@/styles'
 import { useState } from 'react'
@@ -8,6 +8,8 @@ import { Button } from 'react-native-paper'
 import { TagsPreview } from './tagsPreview'
 import { imageOrigin } from '@/constants/constanst'
 import { updatetStatusJob } from '@/services/updateStatusJob'
+import { useNavigation } from '@react-navigation/native'
+import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 
 type Props = {
   job: JobsResponse
@@ -15,6 +17,7 @@ type Props = {
 }
 
 export const JobItem = ({ job, refetch }: Props) => {
+  const navigation = useNavigation<NativeStackNavigationProp<NavigateParamList>>()
   const [loading, setLoading] = useState(false)
 
   const handleDelete = async () => {
@@ -29,9 +32,13 @@ export const JobItem = ({ job, refetch }: Props) => {
     setLoading(false)
   }
 
+  const handledEdit = () => {
+    navigation.navigate(`UpdateJob`, { id: job._id })
+  }
+
   return (
     <View style={styles.container}>
-      {job?.image && <Image source={{ uri: `${imageOrigin}${job.image}` }} style={styles.image} resizeMode='cover' />}
+      {job?.image && <Image source={{ uri: `${imageOrigin}/${job.image}` }} style={styles.image} resizeMode='cover' />}
 
       <View style={styles.containerTitle}>
         <Text style={styles.title}>{job.title}</Text>
@@ -79,7 +86,7 @@ export const JobItem = ({ job, refetch }: Props) => {
           disabled={loading}
           textColor={Colors.primaryLight}
           icon='pen'
-          onPress={handleUpdateStatus}>Editar</Button>
+          onPress={handledEdit}>Editar</Button>
 
       </View>
 

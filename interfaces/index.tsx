@@ -1,3 +1,5 @@
+import { Asset } from 'react-native-image-picker'
+
 export interface LoginResponse {
   error?: string
   token?: string
@@ -88,4 +90,19 @@ export type JobsResponse = {
   active: boolean
   createdAt: string
   updatedAt: string
+}
+
+
+export type JobUpdateProps = {
+  title: string
+  location: string
+  description: string
+  image?: Asset | string | null
+  tags: string[]
+}
+
+export type NavigateParamList = {
+  UpdateJob?: { id: string } | undefined;
+  Product?: { id: string } | undefined;
+  Service?: { id: string } | undefined;
 }
