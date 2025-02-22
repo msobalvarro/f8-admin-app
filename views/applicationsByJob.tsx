@@ -3,11 +3,8 @@ import { ItemApplicationJob } from '@/components/jobs/itemApplicationJob'
 import { TitleView } from '@/components/TitleView'
 import { useAxios } from '@/hooks/useFetch'
 import { ApplicationsByJobResponse } from '@/interfaces'
-import { socket } from '@/socket'
 import { StaticScreenProps } from '@react-navigation/native'
-import { useEffect } from 'react'
 import { StyleSheet, View } from 'react-native'
-import { Toast } from 'react-native-alert-notification'
 
 type Props = StaticScreenProps<{
   jobId: string

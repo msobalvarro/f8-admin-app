@@ -544,7 +544,6 @@ export const ItemApplicationJobStyles = StyleSheet.create({
     borderRadius: 12,
     padding: 15,
     gap: 10,
-    marginVertical: 8,
     shadowColor: '#000',
     shadowOpacity: 0.2,
     shadowRadius: 5,

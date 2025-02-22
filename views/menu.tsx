@@ -50,6 +50,11 @@ export default function Menu() {
           <Text style={styles.text}>Mensajes</Text>
         </TouchableOpacity>
 
+        <TouchableOpacity style={styles.button} onPress={() => router.navigate('Jobs' as never)}>
+          <IconJobsMenu />
+          <Text style={styles.text}>Empleos</Text>
+        </TouchableOpacity>
+
         <TouchableOpacity style={styles.button} onPress={() => router.navigate('Services' as never)}>
           <IconServiceListMenu />
           <Text style={styles.text}>Servicios F8</Text>
@@ -78,11 +83,6 @@ export default function Menu() {
         <TouchableOpacity style={styles.button} onPress={() => router.navigate('Users' as never)}>
           <IconUsers />
           <Text style={styles.text}>Usuarios F8</Text>
-        </TouchableOpacity>
-        
-        <TouchableOpacity style={styles.button} onPress={() => router.navigate('Jobs' as never)}>
-          <IconJobsMenu />
-          <Text style={styles.text}>Empleos</Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.button} onPress={logout}>
