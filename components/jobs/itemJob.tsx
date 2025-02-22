@@ -3,7 +3,7 @@ import { JobsResponse, NavigateParamList } from '@/interfaces'
 import { deleteJobService } from '@/services/deleteJob'
 import { ItemJobStyles as styles } from '@/styles'
 import { useState } from 'react'
-import { View, Text, Image } from 'react-native'
+import { View, Text, Image, TouchableOpacity } from 'react-native'
 import { Button } from 'react-native-paper'
 import { TagsPreview } from './tagsPreview'
 import { imageOrigin } from '@/constants/constanst'
@@ -36,9 +36,22 @@ export const JobItem = ({ job, refetch }: Props) => {
     navigation.navigate(`UpdateJob`, { id: job._id })
   }
 
+  const handleNavigateApplications = () => {
+    navigation.navigate(`ApplicationsByJob`, {
+      jobId: job._id,
+      jobTitle: job.title,
+    })
+  }
+
   return (
     <View style={styles.container}>
       {job?.image && <Image source={{ uri: `${imageOrigin}/${job.image}` }} style={styles.image} resizeMode='cover' />}
+
+      {job.applicationsCount > 0 && (
+        <TouchableOpacity onPress={handleNavigateApplications} style={styles.containerCounter}>
+          <Text style={styles.textCount}>{job.applicationsCount} persona(s) han aplicado a este empleo</Text>
+        </TouchableOpacity>
+      )}
 
       <View style={styles.containerTitle}>
         <Text style={styles.title}>{job.title}</Text>
@@ -48,6 +61,7 @@ export const JobItem = ({ job, refetch }: Props) => {
         </View>
       </View>
 
+
       <View style={styles.content}>
         <Text style={styles.location}>{job.location}</Text>
         <Text style={styles.description} numberOfLines={3}>
@@ -56,6 +70,7 @@ export const JobItem = ({ job, refetch }: Props) => {
 
         <TagsPreview tags={job.tags} />
       </View>
+
 
       <View style={styles.containerButtons}>
         <Button

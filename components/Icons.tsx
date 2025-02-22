@@ -27,4 +27,5 @@ export const IconUndo = () => <IconFontAwsome name='undo' size={24} color={Color
 export const IconUsers = () => <IconFontAwsome name='users' size={24} color={Colors.light.background} />
 export const IconCalendar = () => <IconFontAwsome name='calendar' size={14} color='#CCCCCC' />
 export const IconUser = () => <IconFontAwsome name='user-circle' size={64} color={Colors.light.background} />
+export const IconApplicationAttachment = () => <IconIonic name='document-attach-sharp' size={64} color={Colors.light.icon} />
 

@@ -412,7 +412,8 @@ export const ItemJobStyles = StyleSheet.create({
   container: {
     backgroundColor: Colors.cardBackgrond,
     borderRadius: 12,
-    padding: 16,
+    padding: 15,
+    gap: 10,
     marginVertical: 8,
     shadowColor: '#000',
     shadowOpacity: 0.2,
@@ -469,13 +470,23 @@ export const ItemJobStyles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     gap: 10,
-    marginTop: 20,
   },
 
   containerTitle: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center'
+  },
+
+  containerCounter: {
+    backgroundColor: Colors.primary,
+    padding: 10,
+    borderRadius: 10,
+  },
+
+  textCount: {
+    textAlign: 'center',
+    color: '#CCC',
   }
 })
 
@@ -524,4 +535,34 @@ export const tagsInputStyles = StyleSheet.create({
     color: '#FFF',
     fontSize: 12,
   },
+})
+
+export const ItemApplicationJobStyles = StyleSheet.create({
+  container: {
+    backgroundColor: Colors.cardBackgrond,
+    borderRadius: 12,
+    padding: 15,
+    gap: 10,
+    marginVertical: 8,
+    shadowColor: '#000',
+    shadowOpacity: 0.2,
+    shadowRadius: 5,
+    elevation: 5,
+    flexDirection: 'row',
+    alignItems:'center'
+  },
+  title: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#00BFFF',
+  },
+  text: {
+    // fontSize: 16,
+    color: Colors.dark.text,
+  },
+  textDate: {
+    textAlign: 'right',
+    fontSize: 14,
+    color: '#A0A0A0',
+  }
 })

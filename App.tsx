@@ -5,7 +5,7 @@ import { theme } from './constants/constanst'
 import { AlertNotificationRoot } from 'react-native-alert-notification'
 import { UiNavbar } from './components/ui/Navbar'
 import { useStore } from './hooks/useStore'
-import { useEffect} from 'react'
+import { useEffect } from 'react'
 import { registerNotification, socket } from './socket'
 import Login from './views/login'
 import Menu from './views/menu'
@@ -23,6 +23,7 @@ import UpdatePasswordUser from './views/updatePasswordUser'
 import Jobs from './views/jobs'
 import NewJob from './views/newJob'
 import UpdateJob from './views/updateJob'
+import { ApplicationsByJob } from './views/applicationsByJob'
 
 
 const RootStack = createNativeStackNavigator({
@@ -47,7 +48,8 @@ const RootStack = createNativeStackNavigator({
     UpdatePasswordUser,
     Jobs,
     NewJob,
-    UpdateJob
+    UpdateJob,
+    ApplicationsByJob
   },
 })
 

@@ -88,10 +88,21 @@ export type JobsResponse = {
   image?: string | null
   tags: string[]
   active: boolean
+  applicationsCount: number
   createdAt: string
   updatedAt: string
 }
 
+export type ApplicationsByJobResponse = {
+  _id: string
+  fullName: string
+  email: string
+  phoneNumber: string
+  cv: string
+  archived: boolean
+  createdAt: string
+  updatedAt: string
+}
 
 export type JobUpdateProps = {
   title: string
@@ -102,7 +113,11 @@ export type JobUpdateProps = {
 }
 
 export type NavigateParamList = {
-  UpdateJob?: { id: string } | undefined;
-  Product?: { id: string } | undefined;
-  Service?: { id: string } | undefined;
+  UpdateJob?: { id: string } | undefined
+  Product?: { id: string } | undefined
+  Service?: { id: string } | undefined
+  ApplicationsByJob?: {
+    jobId: string
+    jobTitle: string  
+  }
 }

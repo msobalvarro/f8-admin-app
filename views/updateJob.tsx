@@ -32,7 +32,7 @@ export default function UpdateJob({ route }: Props) {
     image: null,
   })
 
-  const { data: dataJob, isLoading, refetch } = useAxios<JobsResponse>({ endpoint: `/jobs/${id}` })
+  const { data: dataJob, isLoading, refetch } = useAxios<JobsResponse>({ endpoint: `/jobs/detail/${id}` })
 
   useEffect(() => {
     if (dataJob) {
@@ -135,10 +135,4 @@ const styles = StyleSheet.create({
     paddingVertical: 30,
     gap: 20,
   },
-  imageContainer: {
-    gap: 20,
-  },
-  inputContainer: {
-    gap: 20,
-  }
 })
