@@ -122,4 +122,7 @@ export type NavigateParamList = {
     jobId: string
     jobTitle: string
   }
+  UpdatePasswordUser: {
+    user: UserResponse
+  }
 }

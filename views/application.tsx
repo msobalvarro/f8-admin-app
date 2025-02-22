@@ -1,9 +1,11 @@
 import { ContainerViewLayout } from '@/components/ContainerView'
 import { ContactButtons } from '@/components/message/contactCard'
 import { TitleView } from '@/components/TitleView'
+import { Colors } from '@/constants/colors'
 import { documentOrigin } from '@/constants/constanst'
 import { useAxios } from '@/hooks/useFetch'
 import { ApplicationsByJobResponse } from '@/interfaces'
+import { store } from '@/store'
 import { StaticScreenProps } from '@react-navigation/native'
 import { StyleSheet } from 'react-native'
 import { View } from 'react-native'
@@ -15,24 +17,36 @@ type Props = StaticScreenProps<{
 }>
 
 export default function VacantApplication({ route }: Props) {
+  const { token } = store.getState()
   const { applicationId } = route.params
   const { data, isLoading, refetch } = useAxios<ApplicationsByJobResponse>({ endpoint: `/applicationJobs/detail/${applicationId}` })
 
   return (
     <ContainerViewLayout scroll isLoading={isLoading} onRefresh={refetch}>
       <View style={styles.container}>
-        <TitleView
+        {/* <TitleView
           title='Información de la persona'
           subtitle='Muestra la información de la persona que ha aplicado a esta vacante'
-          hiddenButton />
+          hiddenButton /> */}
 
         {data && (
-          <View>
-            <Text>{data.fullName}</Text>
+          <View style={styles.containerInformation}>
+            <Text style={styles.name}>{data.fullName}</Text>
 
-            <Pdf
-              source={{ uri: `${documentOrigin}/${data.cv}` }}
-              style={{ height: 512, width: 521 }} />
+            {data.cv && (
+              <Pdf
+                trustAllCerts={false}
+                onError={e => console.log(e)}
+                source={{
+                  uri: `${documentOrigin}/${data.cv}`,
+                  method: 'GET',
+                  cache: true,
+                  headers: {
+                    'Authorization': `Bearer ${token}`
+                  }
+                }}
+                style={styles.pdf} />
+            )}
 
             <ContactButtons
               email={data.email}
@@ -50,4 +64,17 @@ const styles = StyleSheet.create({
     paddingVertical: 30,
     gap: 20,
   },
+  containerInformation: {
+    gap: 15,
+  },
+  name: {
+    color: Colors.primaryLight,
+    fontSize: 24,
+  },
+  pdf: {
+    backgroundColor: '#AAA',
+    height: 480,
+    borderRadius: 10,
+    width: '100%',
+  }
 })

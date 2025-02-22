@@ -1,5 +1,5 @@
 import dayjs from 'dayjs'
-import { UserResponse } from '@/interfaces'
+import { NavigateParamList, UserResponse } from '@/interfaces'
 import { UserListStyles as styles } from '@/styles'
 import { View, Text } from 'react-native'
 import { Button } from 'react-native-paper'
@@ -9,16 +9,17 @@ import { deleteUserService } from '@/services/deleteUser'
 import { UsersContextService } from '@/context'
 import { useNavigation } from '@react-navigation/native'
 import { IconCalendar, IconUser } from '../Icons'
+import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 
 interface Props {
   users: UserResponse[]
 }
 
 export const UserList = ({ users }: Props) => {
-  const navigation = useNavigation()
+  const navigation = useNavigation<NativeStackNavigationProp<NavigateParamList>>()
   const context = useContext(UsersContextService)
   const [loading, setLoading] = useState(false)
-  const onUpdatePassword = (user: UserResponse) => navigation.navigate('UpdatePasswordUser' as never, user)
+  const onUpdatePassword = (user: UserResponse) => navigation.navigate('UpdatePasswordUser', user)
 
   const deleteUser = async (id: string) => {
     setLoading(true)

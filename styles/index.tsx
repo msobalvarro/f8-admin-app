@@ -364,8 +364,8 @@ export const UserListStyles = StyleSheet.create({
     marginVertical: 4,
   },
   date: {
-    fontSize: 14,
-    color: '#CCCCCC',
+    fontSize: 12,
+    color: '#AAA',
   },
   dateContainer: {
     // marginBottom: 20,
