@@ -1,4 +1,5 @@
 import { ContainerViewLayout } from '@/components/ContainerView'
+import { IconCallPhone, IconMail } from '@/components/Icons'
 import { ContactButtons } from '@/components/message/contactCard'
 import { TitleView } from '@/components/TitleView'
 import { Colors } from '@/constants/colors'
@@ -7,9 +8,10 @@ import { useAxios } from '@/hooks/useFetch'
 import { ApplicationsByJobResponse } from '@/interfaces'
 import { store } from '@/store'
 import { StaticScreenProps } from '@react-navigation/native'
+import dayjs from 'dayjs'
 import { StyleSheet } from 'react-native'
 import { View } from 'react-native'
-import { Text } from 'react-native-paper'
+import { ActivityIndicator, Text } from 'react-native-paper'
 import Pdf from 'react-native-pdf'
 
 type Props = StaticScreenProps<{
@@ -19,26 +21,33 @@ type Props = StaticScreenProps<{
 export default function VacantApplication({ route }: Props) {
   const { token } = store.getState()
   const { applicationId } = route.params
-  const { data, isLoading, refetch } = useAxios<ApplicationsByJobResponse>({ endpoint: `/applicationJobs/detail/${applicationId}` })
+  const { data: dataApplication, isLoading, refetch } = useAxios<ApplicationsByJobResponse>({ endpoint: `/applicationJobs/detail/${applicationId}` })
 
   return (
-    <ContainerViewLayout scroll isLoading={isLoading} onRefresh={refetch}>
+    <ContainerViewLayout>
       <View style={styles.container}>
-        {/* <TitleView
-          title='Información de la persona'
-          subtitle='Muestra la información de la persona que ha aplicado a esta vacante'
-          hiddenButton /> */}
+        {isLoading && <ActivityIndicator />}
 
-        {data && (
+        {dataApplication && (
           <View style={styles.containerInformation}>
-            <Text style={styles.name}>{data.fullName}</Text>
+            <Text style={styles.name}>{dataApplication.fullName}</Text>
+            <View style={styles.containerContactInformation}>
+              <View style={styles.subContainerInformation}>
+                <IconMail />
+                <Text>{dataApplication.email}</Text>
+              </View>
+              <View style={styles.subContainerInformation}>
+                <IconCallPhone />
+                <Text>{dataApplication.phoneNumber}</Text>
+              </View>
+            </View>
 
-            {data.cv && (
+            {(dataApplication.cv && token) && (
               <Pdf
                 trustAllCerts={false}
                 onError={e => console.log(e)}
                 source={{
-                  uri: `${documentOrigin}/${data.cv}`,
+                  uri: `${documentOrigin}/${dataApplication.cv}`,
                   method: 'GET',
                   cache: true,
                   headers: {
@@ -49,9 +58,13 @@ export default function VacantApplication({ route }: Props) {
             )}
 
             <ContactButtons
-              email={data.email}
-              whatsapp={data.phoneNumber}
-              phoneNumber={data.phoneNumber} />
+              email={dataApplication.email}
+              whatsapp={dataApplication.phoneNumber}
+              phoneNumber={dataApplication.phoneNumber} />
+
+            <Text style={styles.textDate}>
+              {dataApplication.fullName.split(' ')[0]} aplicó el {dayjs(dataApplication.createdAt).format('LL')}
+            </Text>
           </View>
         )}
       </View>
@@ -70,11 +83,25 @@ const styles = StyleSheet.create({
   name: {
     color: Colors.primaryLight,
     fontSize: 24,
+    textAlign: 'center',
   },
   pdf: {
     backgroundColor: '#AAA',
     height: 480,
     borderRadius: 10,
     width: '100%',
+  },
+  containerContactInformation: {
+    flexDirection: 'row-reverse',
+    justifyContent: 'space-between',
+  },
+  subContainerInformation: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 5,
+  },
+  textDate: {
+    color: '#AAA',
+    textAlign: 'center'
   }
 })
