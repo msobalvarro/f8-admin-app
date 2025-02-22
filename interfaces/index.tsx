@@ -1,3 +1,5 @@
+import { Asset } from 'react-native-image-picker'
+
 export interface LoginResponse {
   error?: string
   token?: string
@@ -76,4 +78,48 @@ export interface UserResponse {
   username: string
   createdAt: string
   updatedAt: string
+}
+
+export type JobsResponse = {
+  _id: string
+  title: string
+  location: string
+  description: string
+  image?: string | null
+  tags: string[]
+  active: boolean
+  applicationsCount: number
+  createdAt: string
+  updatedAt: string
+}
+
+export type ApplicationsByJobResponse = {
+  _id: string
+  fullName: string
+  email: string
+  phoneNumber: string
+  cv: string
+  archived: boolean
+  createdAt: string
+  updatedAt: string
+  job?: JobsResponse
+}
+
+export type JobUpdateProps = {
+  title: string
+  location: string
+  description: string
+  image?: Asset | string | null
+  tags: string[]
+}
+
+export type NavigateParamList = {
+  UpdateJob?: { id: string } | undefined
+  Product?: { id: string } | undefined
+  Service?: { id: string } | undefined
+  VacantApplication?: { applicationId: string }
+  ApplicationsByJob?: {
+    jobId: string
+    jobTitle: string
+  }
 }

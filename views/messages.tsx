@@ -5,10 +5,10 @@ import { Colors } from '@/constants/colors'
 import { useAxios } from '@/hooks/useFetch'
 import { MessagesResponse } from '@/interfaces'
 import { socket } from '@/socket'
-import { MessageStyles as styles, UiStyles } from '@/styles'
+import { MessageStyles as styles } from '@/styles'
 import { useEffect, useState } from 'react'
-import { Text, TextInput, View } from 'react-native'
-import { Checkbox, Searchbar, Switch } from 'react-native-paper'
+import { Text, View } from 'react-native'
+import { Searchbar, Switch } from 'react-native-paper'
 
 export default function MessageView() {
   const [showArchive, toggleArchive] = useState(false)

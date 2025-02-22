@@ -34,7 +34,7 @@ export const UserList = ({ users }: Props) => {
         <Text style={styles.date}>{dayjs(item.createdAt).format('DD/MM/YY HH:mm A')}</Text>
       </View>
 
-      <View style={{ flexDirection: 'row', gap: 15, alignItems: 'center',  }}>
+      <View style={{ flexDirection: 'column', gap: 15, alignItems: 'center',  }}>
         <IconUser />
         <View style={styles.containerNames}>
           <Text style={styles.name}>

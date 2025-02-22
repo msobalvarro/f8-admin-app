@@ -2,7 +2,7 @@ import { Text, TouchableOpacity, View } from 'react-native'
 import { TittleViewStyles as styles } from '@/styles'
 import { IconAddMenu } from './Icons'
 
-interface Props {
+type Props = {
   title: string
   subtitle?: string
   onClickAdd?: () => void

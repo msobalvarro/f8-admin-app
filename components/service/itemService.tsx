@@ -1,21 +1,22 @@
 import { ProductsStyles as styles } from '@/styles'
-import { ServicesPropierties } from '@/interfaces'
+import { NavigateParamList, ServicesPropierties } from '@/interfaces'
 import { Text, View } from 'react-native'
 import { CarousellProduct } from '@/components/product/CarousellProduct'
 import { Badge, Button } from 'react-native-paper'
 import { IconPin } from '../Icons'
 import { useNavigation } from '@react-navigation/native'
+import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 
 interface Props {
   service: ServicesPropierties
 }
 
 export const ServiceItem = ({ service }: Props) => {
-  const navigation = useNavigation()
+  const navigation = useNavigation<NativeStackNavigationProp<NavigateParamList>>()
 
   const handleEditService = () => {
-    // Navigate to edit product screen
-    navigation.navigate(`Service` as never, { id: service._id } as any)
+    // eslint-disable-next-line
+    navigation.navigate(`Service`, { id: service._id })
   }
 
   return (

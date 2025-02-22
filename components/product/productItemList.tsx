@@ -1,21 +1,22 @@
 import { ProductsStyles as styles } from '@/styles'
-import { ProductsResponse } from '@/interfaces'
+import { NavigateParamList, ProductsResponse } from '@/interfaces'
 import { Text, View } from 'react-native'
 import { CarousellProduct } from '@/components/product/CarousellProduct'
 import { Badge, Button } from 'react-native-paper'
 import { IconPin } from '../Icons'
 import { useNavigation } from '@react-navigation/native'
+import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 
 interface Props {
   product: ProductsResponse
 }
 
 export const ProductItem = ({ product }: Props) => {
-  const navigation = useNavigation()
+  const navigation = useNavigation<NativeStackNavigationProp<NavigateParamList>>()
 
   const handleEditProduct = () => {
     // Navigate to edit product screen
-    navigation.navigate(`Product` as never, { id: product._id } as never)
+    navigation.navigate(`Product`, { id: product._id })
   }
 
   return (
