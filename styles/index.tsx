@@ -486,7 +486,8 @@ export const ItemJobStyles = StyleSheet.create({
 
   textCount: {
     textAlign: 'center',
-    color: '#CCC',
+    textTransform: 'uppercase',
+    color: Colors.light.text,
   }
 })
 
@@ -549,7 +550,7 @@ export const ItemApplicationJobStyles = StyleSheet.create({
     shadowRadius: 5,
     elevation: 5,
     flexDirection: 'row',
-    alignItems:'center'
+    alignItems: 'center'
   },
   title: {
     fontSize: 18,
@@ -562,7 +563,7 @@ export const ItemApplicationJobStyles = StyleSheet.create({
   },
   textDate: {
     textAlign: 'right',
-    fontSize: 14,
+    fontSize: 12,
     color: '#A0A0A0',
   }
 })

@@ -23,7 +23,8 @@ import UpdatePasswordUser from './views/updatePasswordUser'
 import Jobs from './views/jobs'
 import NewJob from './views/newJob'
 import UpdateJob from './views/updateJob'
-import { ApplicationsByJob } from './views/applicationsByJob'
+import ApplicationsByJob from './views/applicationsByJob'
+import VacantApplication from './views/application'
 
 
 const RootStack = createNativeStackNavigator({
@@ -49,7 +50,8 @@ const RootStack = createNativeStackNavigator({
     Jobs,
     NewJob,
     UpdateJob,
-    ApplicationsByJob
+    ApplicationsByJob,
+    VacantApplication
   },
 })
 

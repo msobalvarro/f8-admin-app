@@ -3,19 +3,20 @@ import { ItemApplicationJob } from '@/components/jobs/itemApplicationJob'
 import { TitleView } from '@/components/TitleView'
 import { useAxios } from '@/hooks/useFetch'
 import { ApplicationsByJobResponse } from '@/interfaces'
+import { socket } from '@/socket'
 import { StaticScreenProps } from '@react-navigation/native'
+import { useEffect } from 'react'
 import { StyleSheet, View } from 'react-native'
-import { Text } from 'react-native-paper'
+import { Toast } from 'react-native-alert-notification'
 
 type Props = StaticScreenProps<{
   jobId: string
   jobTitle: string
 }>
 
-export const ApplicationsByJob = ({ route }: Props) => {
+export default function ApplicationsByJob({ route }: Props) {
   const { jobId, jobTitle } = route.params
   const { data, isLoading, refetch } = useAxios<ApplicationsByJobResponse[]>({ endpoint: `/applicationJobs/job/${jobId}` })
-
 
   return (
     <ContainerViewLayout scroll onRefresh={refetch} isLoading={isLoading}>
@@ -25,7 +26,7 @@ export const ApplicationsByJob = ({ route }: Props) => {
           subtitle='Muestra todas las personas que han aplicado a este empleo'
           hiddenButton />
 
-        <View>
+        <View style={{ gap: 10 }}>
           {data?.map((application) => <ItemApplicationJob application={application} key={application._id} />)}
         </View>
       </View>

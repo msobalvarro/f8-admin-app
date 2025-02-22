@@ -102,6 +102,7 @@ export type ApplicationsByJobResponse = {
   archived: boolean
   createdAt: string
   updatedAt: string
+  job?: JobsResponse
 }
 
 export type JobUpdateProps = {
@@ -116,8 +117,9 @@ export type NavigateParamList = {
   UpdateJob?: { id: string } | undefined
   Product?: { id: string } | undefined
   Service?: { id: string } | undefined
+  VacantApplication?: { applicationId: string }
   ApplicationsByJob?: {
     jobId: string
-    jobTitle: string  
+    jobTitle: string
   }
 }

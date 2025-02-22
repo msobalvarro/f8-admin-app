@@ -2,6 +2,7 @@
 export const serverAddress = 'http://10.0.2.2:3000'
 // export const serverAddress = 'http://44.204.25.156:3002'
 export const imageOrigin = serverAddress + '/files/images'
+export const documentOrigin = serverAddress + '/files/document'
 import { MD3DarkTheme as DefaultTheme } from 'react-native-paper'
 
 export const theme = {

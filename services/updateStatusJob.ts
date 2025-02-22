@@ -26,7 +26,7 @@ export const updatetStatusJob = async (id: string, active: boolean, refetch: () 
             refetch()
           } catch (error) {
             if (error instanceof AxiosError) {
-              throw new Error(error.response?.data?.error)
+              throw new Error(error.response?.data)
             } else {
               throw new Error(String(error))
             }

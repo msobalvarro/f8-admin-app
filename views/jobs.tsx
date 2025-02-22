@@ -9,6 +9,8 @@ import { Searchbar, Switch, Text } from 'react-native-paper'
 import { Colors } from '@/constants/colors'
 import { JobItem } from '@/components/jobs/itemJob'
 import { useNavigation } from '@react-navigation/native'
+import { ALERT_TYPE, Toast } from 'react-native-alert-notification'
+import { socket } from '@/socket'
 
 export default function Jobs() {
   const navigation = useNavigation()
@@ -17,6 +19,17 @@ export default function Jobs() {
   const { data: jobs, isLoading, refetch } = useAxios<JobsResponse[]>({
     endpoint: `/jobs?active=${showActive}`
   })
+  useEffect(() => {
+    socket.on('newApplication', ({ name, jobTitle }) => {
+      Toast.show({
+        title: `Nuevo CV de ${jobTitle}`,
+        textBody: `${name} ha aplicado a ${jobTitle}`,
+        autoClose: false,
+        type: ALERT_TYPE.INFO
+      })
+      refetch()
+    })
+  }, [])
 
   const dataFilter = jobs?.filter((job) =>
     `${job.title} ${job.description} ${job.location} ${job.tags.toString()}`
